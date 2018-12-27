@@ -34,7 +34,16 @@ class CheckReferenceValidityPass extends AbstractRecursivePass
             $targetDefinition = $this->container->getDefinition((string) $value);
 
             if ($targetDefinition->isAbstract()) {
+<<<<<<< HEAD
                 throw new RuntimeException(sprintf('The definition "%s" has a reference to an abstract definition "%s". Abstract definitions cannot be the target of references.', $this->currentId, $value));
+=======
+                throw new RuntimeException(sprintf(
+                    'The definition "%s" has a reference to an abstract definition "%s". '
+                   .'Abstract definitions cannot be the target of references.',
+                   $this->currentId,
+                   $value
+                ));
+>>>>>>> pantheon-drops-8/master
             }
         }
 

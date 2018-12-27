@@ -375,7 +375,11 @@ class Router implements RouterInterface, RequestMatcherInterface
      * Provides the ConfigCache factory implementation, falling back to a
      * default implementation if necessary.
      *
+<<<<<<< HEAD
      * @return ConfigCacheFactoryInterface
+=======
+     * @return ConfigCacheFactoryInterface $configCacheFactory
+>>>>>>> pantheon-drops-8/master
      */
     private function getConfigCacheFactory()
     {

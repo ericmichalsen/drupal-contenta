@@ -53,7 +53,11 @@ interface Collection extends Countable, IteratorAggregate, ArrayAccess
      *
      * @param mixed $element The element to add.
      *
+<<<<<<< HEAD
      * @return bool Always TRUE.
+=======
+     * @return boolean Always TRUE.
+>>>>>>> pantheon-drops-8/master
      */
     public function add($element);
 
@@ -70,21 +74,33 @@ interface Collection extends Countable, IteratorAggregate, ArrayAccess
      *
      * @param mixed $element The element to search for.
      *
+<<<<<<< HEAD
      * @return bool TRUE if the collection contains the element, FALSE otherwise.
+=======
+     * @return boolean TRUE if the collection contains the element, FALSE otherwise.
+>>>>>>> pantheon-drops-8/master
      */
     public function contains($element);
 
     /**
      * Checks whether the collection is empty (contains no elements).
      *
+<<<<<<< HEAD
      * @return bool TRUE if the collection is empty, FALSE otherwise.
+=======
+     * @return boolean TRUE if the collection is empty, FALSE otherwise.
+>>>>>>> pantheon-drops-8/master
      */
     public function isEmpty();
 
     /**
      * Removes the element at the specified index from the collection.
      *
+<<<<<<< HEAD
      * @param string|int $key The kex/index of the element to remove.
+=======
+     * @param string|integer $key The kex/index of the element to remove.
+>>>>>>> pantheon-drops-8/master
      *
      * @return mixed The removed element or NULL, if the collection did not contain the element.
      */
@@ -95,24 +111,39 @@ interface Collection extends Countable, IteratorAggregate, ArrayAccess
      *
      * @param mixed $element The element to remove.
      *
+<<<<<<< HEAD
      * @return bool TRUE if this collection contained the specified element, FALSE otherwise.
+=======
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+>>>>>>> pantheon-drops-8/master
      */
     public function removeElement($element);
 
     /**
      * Checks whether the collection contains an element with the specified key/index.
      *
+<<<<<<< HEAD
      * @param string|int $key The key/index to check for.
      *
      * @return bool TRUE if the collection contains an element with the specified key/index,
      *              FALSE otherwise.
+=======
+     * @param string|integer $key The key/index to check for.
+     *
+     * @return boolean TRUE if the collection contains an element with the specified key/index,
+     *                 FALSE otherwise.
+>>>>>>> pantheon-drops-8/master
      */
     public function containsKey($key);
 
     /**
      * Gets the element at the specified key/index.
      *
+<<<<<<< HEAD
      * @param string|int $key The key/index of the element to retrieve.
+=======
+     * @param string|integer $key The key/index of the element to retrieve.
+>>>>>>> pantheon-drops-8/master
      *
      * @return mixed
      */
@@ -137,8 +168,13 @@ interface Collection extends Countable, IteratorAggregate, ArrayAccess
     /**
      * Sets an element in the collection at the specified key/index.
      *
+<<<<<<< HEAD
      * @param string|int $key   The key/index of the element to set.
      * @param mixed      $value The element to set.
+=======
+     * @param string|integer $key   The key/index of the element to set.
+     * @param mixed          $value The element to set.
+>>>>>>> pantheon-drops-8/master
      *
      * @return void
      */
@@ -191,7 +227,11 @@ interface Collection extends Countable, IteratorAggregate, ArrayAccess
      *
      * @param Closure $p The predicate.
      *
+<<<<<<< HEAD
      * @return bool TRUE if the predicate is TRUE for at least one element, FALSE otherwise.
+=======
+     * @return boolean TRUE if the predicate is TRUE for at least one element, FALSE otherwise.
+>>>>>>> pantheon-drops-8/master
      */
     public function exists(Closure $p);
 
@@ -210,7 +250,11 @@ interface Collection extends Countable, IteratorAggregate, ArrayAccess
      *
      * @param Closure $p The predicate.
      *
+<<<<<<< HEAD
      * @return bool TRUE, if the predicate yields TRUE for all elements, FALSE otherwise.
+=======
+     * @return boolean TRUE, if the predicate yields TRUE for all elements, FALSE otherwise.
+>>>>>>> pantheon-drops-8/master
      */
     public function forAll(Closure $p);
 
@@ -230,9 +274,15 @@ interface Collection extends Countable, IteratorAggregate, ArrayAccess
      *
      * @param Closure $p The predicate on which to partition.
      *
+<<<<<<< HEAD
      * @return Collection[] An array with two elements. The first element contains the collection
      *                      of elements where the predicate returned TRUE, the second element
      *                      contains the collection of elements where the predicate returned FALSE.
+=======
+     * @return array An array with two elements. The first element contains the collection
+     *               of elements where the predicate returned TRUE, the second element
+     *               contains the collection of elements where the predicate returned FALSE.
+>>>>>>> pantheon-drops-8/master
      */
     public function partition(Closure $p);
 

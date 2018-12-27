@@ -53,7 +53,11 @@ abstract class FileDumper implements DumperInterface
     /**
      * Sets backup flag.
      *
+<<<<<<< HEAD
      * @param bool $backup
+=======
+     * @param bool
+>>>>>>> pantheon-drops-8/master
      */
     public function setBackup($backup)
     {

@@ -37,7 +37,10 @@ class AnalyzeServiceReferencesPass extends AbstractRecursivePass implements Repe
     private $hasProxyDumper;
     private $lazy;
     private $expressionLanguage;
+<<<<<<< HEAD
     private $byConstructor;
+=======
+>>>>>>> pantheon-drops-8/master
 
     /**
      * @param bool $onlyConstructorArguments Sets this Service Reference pass to ignore method calls
@@ -65,7 +68,10 @@ class AnalyzeServiceReferencesPass extends AbstractRecursivePass implements Repe
         $this->graph = $container->getCompiler()->getServiceReferenceGraph();
         $this->graph->clear();
         $this->lazy = false;
+<<<<<<< HEAD
         $this->byConstructor = false;
+=======
+>>>>>>> pantheon-drops-8/master
 
         foreach ($container->getAliases() as $id => $alias) {
             $targetId = $this->getDefinitionId((string) $alias);
@@ -102,8 +108,12 @@ class AnalyzeServiceReferencesPass extends AbstractRecursivePass implements Repe
                 $targetDefinition,
                 $value,
                 $this->lazy || ($this->hasProxyDumper && $targetDefinition && $targetDefinition->isLazy()),
+<<<<<<< HEAD
                 ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE === $value->getInvalidBehavior(),
                 $this->byConstructor
+=======
+                ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE === $value->getInvalidBehavior()
+>>>>>>> pantheon-drops-8/master
             );
 
             return $value;
@@ -116,6 +126,7 @@ class AnalyzeServiceReferencesPass extends AbstractRecursivePass implements Repe
                 return $value;
             }
             $this->currentDefinition = $value;
+<<<<<<< HEAD
         } elseif ($this->currentDefinition === $value) {
             return $value;
         }
@@ -126,6 +137,13 @@ class AnalyzeServiceReferencesPass extends AbstractRecursivePass implements Repe
         $this->processValue($value->getFactory());
         $this->processValue($value->getArguments());
         $this->byConstructor = $byConstructor;
+=======
+        }
+        $this->lazy = false;
+
+        $this->processValue($value->getFactory());
+        $this->processValue($value->getArguments());
+>>>>>>> pantheon-drops-8/master
 
         if (!$this->onlyConstructorArguments) {
             $this->processValue($value->getProperties());

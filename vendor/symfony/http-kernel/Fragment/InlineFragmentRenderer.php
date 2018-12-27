@@ -122,6 +122,7 @@ class InlineFragmentRenderer extends RoutableFragmentRenderer
             $subRequest->setSession($session);
         }
 
+<<<<<<< HEAD
         if ($request->get('_format')) {
             $subRequest->attributes->set('_format', $request->get('_format'));
         }
@@ -129,6 +130,8 @@ class InlineFragmentRenderer extends RoutableFragmentRenderer
             $subRequest->setLocale($request->getLocale());
         }
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $subRequest;
     }
 

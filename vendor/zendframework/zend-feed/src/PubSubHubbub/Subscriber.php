@@ -147,7 +147,11 @@ class Subscriber
             $options = ArrayUtils::iteratorToArray($options);
         }
 
+<<<<<<< HEAD
         if (! is_array($options)) {
+=======
+        if (!is_array($options)) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Array or Traversable object'
                                 . 'expected, got ' . gettype($options));
         }
@@ -193,7 +197,11 @@ class Subscriber
      */
     public function setTopicUrl($url)
     {
+<<<<<<< HEAD
         if (empty($url) || ! is_string($url) || ! Uri::factory($url)->isValid()) {
+=======
+        if (empty($url) || !is_string($url) || !Uri::factory($url)->isValid()) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid parameter "url"'
                 .' of "' . $url . '" must be a non-empty string and a valid'
                 .' URL');
@@ -256,7 +264,11 @@ class Subscriber
      */
     public function setCallbackUrl($url)
     {
+<<<<<<< HEAD
         if (empty($url) || ! is_string($url) || ! Uri::factory($url)->isValid()) {
+=======
+        if (empty($url) || !is_string($url) || !Uri::factory($url)->isValid()) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid parameter "url"'
                 . ' of "' . $url . '" must be a non-empty string and a valid'
                 . ' URL');
@@ -326,7 +338,11 @@ class Subscriber
      */
     public function addHubUrl($url)
     {
+<<<<<<< HEAD
         if (empty($url) || ! is_string($url) || ! Uri::factory($url)->isValid()) {
+=======
+        if (empty($url) || !is_string($url) || !Uri::factory($url)->isValid()) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid parameter "url"'
                 . ' of "' . $url . '" must be a non-empty string and a valid'
                 . ' URL');
@@ -357,7 +373,11 @@ class Subscriber
      */
     public function removeHubUrl($url)
     {
+<<<<<<< HEAD
         if (! in_array($url, $this->getHubUrls())) {
+=======
+        if (!in_array($url, $this->getHubUrls())) {
+>>>>>>> pantheon-drops-8/master
             return $this;
         }
         $key = array_search($url, $this->hubUrls);
@@ -386,7 +406,11 @@ class Subscriber
      */
     public function addAuthentication($url, array $authentication)
     {
+<<<<<<< HEAD
         if (empty($url) || ! is_string($url) || ! Uri::factory($url)->isValid()) {
+=======
+        if (empty($url) || !is_string($url) || !Uri::factory($url)->isValid()) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid parameter "url"'
                 . ' of "' . $url . '" must be a non-empty string and a valid'
                 . ' URL');
@@ -445,7 +469,11 @@ class Subscriber
             $this->setParameters($name);
             return $this;
         }
+<<<<<<< HEAD
         if (empty($name) || ! is_string($name)) {
+=======
+        if (empty($name) || !is_string($name)) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid parameter "name"'
                 . ' of "' . $name . '" must be a non-empty string');
         }
@@ -453,7 +481,11 @@ class Subscriber
             $this->removeParameter($name);
             return $this;
         }
+<<<<<<< HEAD
         if (empty($value) || (! is_string($value) && $value !== null)) {
+=======
+        if (empty($value) || (!is_string($value) && $value !== null)) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid parameter "value"'
                 . ' of "' . $value . '" must be a non-empty string');
         }
@@ -484,7 +516,11 @@ class Subscriber
      */
     public function removeParameter($name)
     {
+<<<<<<< HEAD
         if (empty($name) || ! is_string($name)) {
+=======
+        if (empty($name) || !is_string($name)) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid parameter "name"'
                 . ' of "' . $name . '" must be a non-empty string');
         }
@@ -602,10 +638,15 @@ class Subscriber
      * @return void
      * @throws Exception\RuntimeException
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _doRequest($mode)
     {
         // @codingStandardsIgnoreEnd
+=======
+    protected function _doRequest($mode)
+    {
+>>>>>>> pantheon-drops-8/master
         $client = $this->_getHttpClient();
         $hubs   = $this->getHubUrls();
         if (empty($hubs)) {
@@ -650,10 +691,15 @@ class Subscriber
      *
      * @return \Zend\Http\Client
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _getHttpClient()
     {
         // @codingStandardsIgnoreEnd
+=======
+    protected function _getHttpClient()
+    {
+>>>>>>> pantheon-drops-8/master
         $client = PubSubHubbub::getHttpClient();
         $client->setMethod(HttpRequest::METHOD_POST);
         $client->setOptions(['useragent' => 'Zend_Feed_Pubsubhubbub_Subscriber/'
@@ -670,11 +716,17 @@ class Subscriber
      * @return string
      * @throws Exception\InvalidArgumentException
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _getRequestParameters($hubUrl, $mode)
     {
         // @codingStandardsIgnoreEnd
         if (! in_array($mode, ['subscribe', 'unsubscribe'])) {
+=======
+    protected function _getRequestParameters($hubUrl, $mode)
+    {
+        if (!in_array($mode, ['subscribe', 'unsubscribe'])) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid mode specified: "'
                 . $mode . '" which should have been "subscribe" or "unsubscribe"');
         }
@@ -711,7 +763,11 @@ class Subscriber
         $params['hub.verify_token'] = $token;
 
         // Note: query string only usable with PuSH 0.2 Hubs
+<<<<<<< HEAD
         if (! $this->usePathParameter) {
+=======
+        if (!$this->usePathParameter) {
+>>>>>>> pantheon-drops-8/master
             $params['hub.callback'] = $this->getCallbackUrl()
                 . '?xhub.subscription=' . PubSubHubbub::urlencode($key);
         } else {
@@ -744,9 +800,13 @@ class Subscriber
             'verify_token'       => hash('sha256', $params['hub.verify_token']),
             'secret'             => null,
             'expiration_time'    => $expires,
+<<<<<<< HEAD
             // @codingStandardsIgnoreStart
             'subscription_state' => ($mode == 'unsubscribe') ? PubSubHubbub::SUBSCRIPTION_TODELETE : PubSubHubbub::SUBSCRIPTION_NOTVERIFIED,
             // @codingStandardsIgnoreEnd
+=======
+            'subscription_state' => ($mode == 'unsubscribe')? PubSubHubbub::SUBSCRIPTION_TODELETE : PubSubHubbub::SUBSCRIPTION_NOTVERIFIED,
+>>>>>>> pantheon-drops-8/master
         ];
         $this->getStorage()->setSubscription($data);
 
@@ -762,11 +822,17 @@ class Subscriber
      *
      * @return string
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _generateVerifyToken()
     {
         // @codingStandardsIgnoreEnd
         if (! empty($this->testStaticToken)) {
+=======
+    protected function _generateVerifyToken()
+    {
+        if (!empty($this->testStaticToken)) {
+>>>>>>> pantheon-drops-8/master
             return $this->testStaticToken;
         }
         return uniqid(rand(), true) . time();
@@ -780,10 +846,15 @@ class Subscriber
      * @param string $hubUrl The Hub Server URL for which this token will apply
      * @return string
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _generateSubscriptionKey(array $params, $hubUrl)
     {
         // @codingStandardsIgnoreEnd
+=======
+    protected function _generateSubscriptionKey(array $params, $hubUrl)
+    {
+>>>>>>> pantheon-drops-8/master
         $keyBase = $params['hub.topic'] . $hubUrl;
         $key     = md5($keyBase);
 
@@ -796,10 +867,15 @@ class Subscriber
      * @param  array $params
      * @return array
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _urlEncode(array $params)
     {
         // @codingStandardsIgnoreEnd
+=======
+    protected function _urlEncode(array $params)
+    {
+>>>>>>> pantheon-drops-8/master
         $encoded = [];
         foreach ($params as $key => $value) {
             if (is_array($value)) {
@@ -823,10 +899,15 @@ class Subscriber
      * @param  array $params
      * @return array
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _toByteValueOrderedString(array $params)
     {
         // @codingStandardsIgnoreEnd
+=======
+    protected function _toByteValueOrderedString(array $params)
+    {
+>>>>>>> pantheon-drops-8/master
         $return = [];
         uksort($params, 'strnatcmp');
         foreach ($params as $key => $value) {

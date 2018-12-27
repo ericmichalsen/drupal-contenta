@@ -72,8 +72,13 @@ final class Mbstring
     private static $language = 'neutral';
     private static $internalEncoding = 'UTF-8';
     private static $caseFold = array(
+<<<<<<< HEAD
         array('µ', 'ſ', "\xCD\x85", 'ς', "\xCF\x90", "\xCF\x91", "\xCF\x95", "\xCF\x96", "\xCF\xB0", "\xCF\xB1", "\xCF\xB5", "\xE1\xBA\x9B", "\xE1\xBE\xBE"),
         array('μ', 's', 'ι',        'σ', 'β',        'θ',        'φ',        'π',        'κ',        'ρ',        'ε',        "\xE1\xB9\xA1", 'ι'),
+=======
+        array('µ','ſ',"\xCD\x85",'ς',"\xCF\x90","\xCF\x91","\xCF\x95","\xCF\x96","\xCF\xB0","\xCF\xB1","\xCF\xB5","\xE1\xBA\x9B","\xE1\xBE\xBE"),
+        array('μ','s','ι',       'σ','β',       'θ',       'φ',       'π',       'κ',       'ρ',       'ε',       "\xE1\xB9\xA1",'ι'),
+>>>>>>> pantheon-drops-8/master
     );
 
     public static function mb_convert_encoding($s, $toEncoding, $fromEncoding = null)
@@ -141,8 +146,12 @@ final class Mbstring
     public static function mb_decode_numericentity($s, $convmap, $encoding = null)
     {
         if (null !== $s && !\is_scalar($s) && !(\is_object($s) && \method_exists($s, '__toString'))) {
+<<<<<<< HEAD
             trigger_error('mb_decode_numericentity() expects parameter 1 to be string, '.\gettype($s).' given', E_USER_WARNING);
 
+=======
+            trigger_error('mb_decode_numericentity() expects parameter 1 to be string, '.gettype($s).' given', E_USER_WARNING);
+>>>>>>> pantheon-drops-8/master
             return null;
         }
 
@@ -151,8 +160,12 @@ final class Mbstring
         }
 
         if (null !== $encoding && !\is_scalar($encoding)) {
+<<<<<<< HEAD
             trigger_error('mb_decode_numericentity() expects parameter 3 to be string, '.\gettype($s).' given', E_USER_WARNING);
 
+=======
+            trigger_error('mb_decode_numericentity() expects parameter 3 to be string, '.gettype($s).' given', E_USER_WARNING);
+>>>>>>> pantheon-drops-8/master
             return '';  // Instead of null (cf. mb_encode_numericentity).
         }
 
@@ -187,7 +200,10 @@ final class Mbstring
                     return Mbstring::mb_chr($c - $convmap[$i + 2]);
                 }
             }
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
             return $m[0];
         }, $s);
 
@@ -201,8 +217,12 @@ final class Mbstring
     public static function mb_encode_numericentity($s, $convmap, $encoding = null, $is_hex = false)
     {
         if (null !== $s && !\is_scalar($s) && !(\is_object($s) && \method_exists($s, '__toString'))) {
+<<<<<<< HEAD
             trigger_error('mb_encode_numericentity() expects parameter 1 to be string, '.\gettype($s).' given', E_USER_WARNING);
 
+=======
+            trigger_error('mb_encode_numericentity() expects parameter 1 to be string, '.gettype($s).' given', E_USER_WARNING);
+>>>>>>> pantheon-drops-8/master
             return null;
         }
 
@@ -211,14 +231,22 @@ final class Mbstring
         }
 
         if (null !== $encoding && !\is_scalar($encoding)) {
+<<<<<<< HEAD
             trigger_error('mb_encode_numericentity() expects parameter 3 to be string, '.\gettype($s).' given', E_USER_WARNING);
 
+=======
+            trigger_error('mb_encode_numericentity() expects parameter 3 to be string, '.gettype($s).' given', E_USER_WARNING);
+>>>>>>> pantheon-drops-8/master
             return null;  // Instead of '' (cf. mb_decode_numericentity).
         }
 
         if (null !== $is_hex && !\is_scalar($is_hex)) {
+<<<<<<< HEAD
             trigger_error('mb_encode_numericentity() expects parameter 4 to be boolean, '.\gettype($s).' given', E_USER_WARNING);
 
+=======
+            trigger_error('mb_encode_numericentity() expects parameter 4 to be boolean, '.gettype($s).' given', E_USER_WARNING);
+>>>>>>> pantheon-drops-8/master
             return null;
         }
 
@@ -333,7 +361,11 @@ final class Mbstring
                     } else {
                         $s = substr_replace($s, $uchr, $i - $ulen, $ulen);
                         $len += $nlen - $ulen;
+<<<<<<< HEAD
                         $i += $nlen - $ulen;
+=======
+                        $i   += $nlen - $ulen;
+>>>>>>> pantheon-drops-8/master
                     }
                 }
             }
@@ -461,7 +493,10 @@ final class Mbstring
                     if (strncmp($enc, 'ISO-8859-', 9)) {
                         return false;
                     }
+<<<<<<< HEAD
                     // no break
+=======
+>>>>>>> pantheon-drops-8/master
                 case 'ASCII':
                 case 'UTF8':
                 case 'UTF-8':
@@ -711,10 +746,13 @@ final class Mbstring
             $s = mb_convert_encoding($s, 'UTF-8', $encoding);
         }
 
+<<<<<<< HEAD
         if (1 === \strlen($s)) {
             return \ord($s);
         }
 
+=======
+>>>>>>> pantheon-drops-8/master
         $code = ($s = unpack('C*', substr($s, 0, 4))) ? $s[1] : 0;
         if (0xF0 <= $code) {
             return (($code - 0xF0) << 18) + (($s[2] - 0x80) << 12) + (($s[3] - 0x80) << 6) + $s[4] - 0x80;

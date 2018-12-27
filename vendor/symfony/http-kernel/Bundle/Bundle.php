@@ -34,21 +34,35 @@ abstract class Bundle implements BundleInterface
     private $namespace;
 
     /**
+<<<<<<< HEAD
      * {@inheritdoc}
+=======
+     * Boots the Bundle.
+>>>>>>> pantheon-drops-8/master
      */
     public function boot()
     {
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritdoc}
+=======
+     * Shutdowns the Bundle.
+>>>>>>> pantheon-drops-8/master
      */
     public function shutdown()
     {
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritdoc}
+=======
+     * Builds the bundle.
+     *
+     * It is only ever called once when the cache is empty.
+>>>>>>> pantheon-drops-8/master
      *
      * This method can be overridden to register compilation passes,
      * other extensions, ...
@@ -79,7 +93,14 @@ abstract class Bundle implements BundleInterface
                 $expectedAlias = Container::underscore($basename);
 
                 if ($expectedAlias != $extension->getAlias()) {
+<<<<<<< HEAD
                     throw new \LogicException(sprintf('Users will expect the alias of the default extension of a bundle to be the underscored version of the bundle name ("%s"). You can override "Bundle::getContainerExtension()" if you want to use "%s" or another alias.', $expectedAlias, $extension->getAlias()));
+=======
+                    throw new \LogicException(sprintf(
+                        'Users will expect the alias of the default extension of a bundle to be the underscored version of the bundle name ("%s"). You can override "Bundle::getContainerExtension()" if you want to use "%s" or another alias.',
+                        $expectedAlias, $extension->getAlias()
+                    ));
+>>>>>>> pantheon-drops-8/master
                 }
 
                 $this->extension = $extension;
@@ -94,7 +115,13 @@ abstract class Bundle implements BundleInterface
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritdoc}
+=======
+     * Gets the Bundle namespace.
+     *
+     * @return string The Bundle namespace
+>>>>>>> pantheon-drops-8/master
      */
     public function getNamespace()
     {
@@ -106,7 +133,13 @@ abstract class Bundle implements BundleInterface
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritdoc}
+=======
+     * Gets the Bundle directory path.
+     *
+     * @return string The Bundle absolute path
+>>>>>>> pantheon-drops-8/master
      */
     public function getPath()
     {
@@ -119,14 +152,26 @@ abstract class Bundle implements BundleInterface
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritdoc}
+=======
+     * Returns the bundle parent name.
+     *
+     * @return string|null The Bundle parent name it overrides or null if no parent
+>>>>>>> pantheon-drops-8/master
      */
     public function getParent()
     {
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritdoc}
+=======
+     * Returns the bundle name (the class short name).
+     *
+     * @return string The Bundle name
+>>>>>>> pantheon-drops-8/master
      */
     final public function getName()
     {

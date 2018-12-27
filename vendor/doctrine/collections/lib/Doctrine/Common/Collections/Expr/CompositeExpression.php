@@ -38,7 +38,11 @@ class CompositeExpression implements Expression
     /**
      * @var Expression[]
      */
+<<<<<<< HEAD
     private $expressions = [];
+=======
+    private $expressions = array();
+>>>>>>> pantheon-drops-8/master
 
     /**
      * @param string $type

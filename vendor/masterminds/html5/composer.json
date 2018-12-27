@@ -20,8 +20,11 @@
         }
     ],
     "require" : {
+<<<<<<< HEAD
         "ext-ctype": "*",
         "ext-dom": "*",
+=======
+>>>>>>> pantheon-drops-8/master
         "ext-libxml" : "*",
         "php" : ">=5.3.0"
     },

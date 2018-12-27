@@ -27,7 +27,11 @@ use Doctrine\Common\Collections\Expr\Value;
  * Builder for Expressions in the {@link Selectable} interface.
  *
  * Important Notice for interoperable code: You have to use scalar
+<<<<<<< HEAD
  * values only for comparisons, otherwise the behavior of the comparison
+=======
+ * values only for comparisons, otherwise the behavior of the comparision
+>>>>>>> pantheon-drops-8/master
  * may be different between implementations (Array vs ORM vs ODM).
  *
  * @author Benjamin Eberlei <kontakt@beberlei.de>
@@ -163,6 +167,7 @@ class ExpressionBuilder
     {
         return new Comparison($field, Comparison::CONTAINS, new Value($value));
     }
+<<<<<<< HEAD
 
     /**
      * @param string $field
@@ -197,4 +202,6 @@ class ExpressionBuilder
         return new Comparison($field, Comparison::ENDS_WITH, new Value($value));
     }    
 
+=======
+>>>>>>> pantheon-drops-8/master
 }

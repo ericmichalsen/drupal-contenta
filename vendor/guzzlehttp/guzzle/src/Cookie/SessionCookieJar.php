@@ -15,7 +15,11 @@ class SessionCookieJar extends CookieJar
     /**
      * Create a new SessionCookieJar object
      *
+<<<<<<< HEAD
      * @param string $sessionKey        Session key name to store the cookie
+=======
+     * @param string $sessionKey        Session key name to store the cookie 
+>>>>>>> pantheon-drops-8/master
      *                                  data in session
      * @param bool $storeSessionCookies Set to true to store session cookies
      *                                  in the cookie jar.

@@ -91,7 +91,11 @@ class XliffFileLoader implements LoaderInterface
             $source = isset($attributes['resname']) && $attributes['resname'] ? $attributes['resname'] : $translation->source;
             // If the xlf file has another encoding specified, try to convert it because
             // simple_xml will always return utf-8 encoded values
+<<<<<<< HEAD
             $target = $this->utf8ToCharset((string) (isset($translation->target) ? $translation->target : $translation->source), $encoding);
+=======
+            $target = $this->utf8ToCharset((string) (isset($translation->target) ? $translation->target : $source), $encoding);
+>>>>>>> pantheon-drops-8/master
 
             $catalogue->set((string) $source, $target, $domain);
 

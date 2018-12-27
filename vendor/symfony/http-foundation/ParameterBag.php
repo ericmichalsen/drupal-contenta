@@ -174,7 +174,11 @@ class ParameterBag implements \IteratorAggregate, \Countable
      * Returns the parameter value converted to boolean.
      *
      * @param string $key     The parameter key
+<<<<<<< HEAD
      * @param bool   $default The default value if the parameter key does not exist
+=======
+     * @param mixed  $default The default value if the parameter key does not exist
+>>>>>>> pantheon-drops-8/master
      *
      * @return bool The filtered value
      */

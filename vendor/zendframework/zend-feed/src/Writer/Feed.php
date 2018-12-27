@@ -99,7 +99,11 @@ class Feed extends AbstractFeed implements Iterator, Countable
      */
     public function removeEntry($index)
     {
+<<<<<<< HEAD
         if (! isset($this->entries[$index])) {
+=======
+        if (!isset($this->entries[$index])) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Undefined index: ' . $index . '. Entry does not exist.');
         }
         unset($this->entries[$index]);

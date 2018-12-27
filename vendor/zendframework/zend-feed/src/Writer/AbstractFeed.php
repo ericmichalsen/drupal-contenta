@@ -61,6 +61,7 @@ class AbstractFeed
     public function addAuthor(array $author)
     {
         // Check array values
+<<<<<<< HEAD
         if (! array_key_exists('name', $author)
             || empty($author['name'])
             || ! is_string($author['name'])
@@ -84,6 +85,28 @@ class AbstractFeed
                 throw new Exception\InvalidArgumentException(
                     'Invalid parameter: "uri" array value must be a non-empty string and valid URI/IRI'
                 );
+=======
+        if (!array_key_exists('name', $author)
+            || empty($author['name'])
+            || !is_string($author['name'])
+        ) {
+            throw new Exception\InvalidArgumentException(
+                'Invalid parameter: author array must include a "name" key with a non-empty string value');
+        }
+
+        if (isset($author['email'])) {
+            if (empty($author['email']) || !is_string($author['email'])) {
+                throw new Exception\InvalidArgumentException(
+                    'Invalid parameter: "email" array value must be a non-empty string');
+            }
+        }
+        if (isset($author['uri'])) {
+            if (empty($author['uri']) || !is_string($author['uri']) ||
+                !Uri::factory($author['uri'])->isValid()
+            ) {
+                throw new Exception\InvalidArgumentException(
+                    'Invalid parameter: "uri" array value must be a non-empty string and valid URI/IRI');
+>>>>>>> pantheon-drops-8/master
             }
         }
 
@@ -117,7 +140,11 @@ class AbstractFeed
      */
     public function setCopyright($copyright)
     {
+<<<<<<< HEAD
         if (empty($copyright) || ! is_string($copyright)) {
+=======
+        if (empty($copyright) || !is_string($copyright)) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid parameter: parameter must be a non-empty string');
         }
         $this->data['copyright'] = $copyright;
@@ -138,7 +165,11 @@ class AbstractFeed
             $date = new DateTime();
         } elseif (is_int($date)) {
             $date = new DateTime('@' . $date);
+<<<<<<< HEAD
         } elseif (! $date instanceof DateTime) {
+=======
+        } elseif (!$date instanceof DateTime) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid DateTime object or UNIX Timestamp'
                                                          . ' passed as parameter');
         }
@@ -160,7 +191,11 @@ class AbstractFeed
             $date = new DateTime();
         } elseif (is_int($date)) {
             $date = new DateTime('@' . $date);
+<<<<<<< HEAD
         } elseif (! $date instanceof DateTime) {
+=======
+        } elseif (!$date instanceof DateTime) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid DateTime object or UNIX Timestamp'
                                                          . ' passed as parameter');
         }
@@ -182,7 +217,11 @@ class AbstractFeed
             $date = new DateTime();
         } elseif (is_int($date)) {
             $date = new DateTime('@' . $date);
+<<<<<<< HEAD
         } elseif (! $date instanceof DateTime) {
+=======
+        } elseif (!$date instanceof DateTime) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid DateTime object or UNIX Timestamp'
                                                          . ' passed as parameter');
         }
@@ -200,7 +239,11 @@ class AbstractFeed
      */
     public function setDescription($description)
     {
+<<<<<<< HEAD
         if (empty($description) || ! is_string($description)) {
+=======
+        if (empty($description) || !is_string($description)) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid parameter: parameter must be a non-empty string');
         }
         $this->data['description'] = $description;
@@ -221,44 +264,72 @@ class AbstractFeed
     {
         if (is_array($name)) {
             $data = $name;
+<<<<<<< HEAD
             if (empty($data['name']) || ! is_string($data['name'])) {
+=======
+            if (empty($data['name']) || !is_string($data['name'])) {
+>>>>>>> pantheon-drops-8/master
                 throw new Exception\InvalidArgumentException('Invalid parameter: "name" must be a non-empty string');
             }
             $generator = ['name' => $data['name']];
             if (isset($data['version'])) {
+<<<<<<< HEAD
                 if (empty($data['version']) || ! is_string($data['version'])) {
                     throw new Exception\InvalidArgumentException(
                         'Invalid parameter: "version" must be a non-empty string'
                     );
+=======
+                if (empty($data['version']) || !is_string($data['version'])) {
+                    throw new Exception\InvalidArgumentException('Invalid parameter: "version" must be a non-empty string');
+>>>>>>> pantheon-drops-8/master
                 }
                 $generator['version'] = $data['version'];
             }
             if (isset($data['uri'])) {
+<<<<<<< HEAD
                 if (empty($data['uri']) || ! is_string($data['uri']) || ! Uri::factory($data['uri'])->isValid()) {
                     throw new Exception\InvalidArgumentException(
                         'Invalid parameter: "uri" must be a non-empty string and a valid URI/IRI'
                     );
+=======
+                if (empty($data['uri']) || !is_string($data['uri']) || !Uri::factory($data['uri'])->isValid()) {
+                    throw new Exception\InvalidArgumentException('Invalid parameter: "uri" must be a non-empty string and a valid URI/IRI');
+>>>>>>> pantheon-drops-8/master
                 }
                 $generator['uri'] = $data['uri'];
             }
         } else {
+<<<<<<< HEAD
             if (empty($name) || ! is_string($name)) {
+=======
+            if (empty($name) || !is_string($name)) {
+>>>>>>> pantheon-drops-8/master
                 throw new Exception\InvalidArgumentException('Invalid parameter: "name" must be a non-empty string');
             }
             $generator = ['name' => $name];
             if (isset($version)) {
+<<<<<<< HEAD
                 if (empty($version) || ! is_string($version)) {
                     throw new Exception\InvalidArgumentException(
                         'Invalid parameter: "version" must be a non-empty string'
                     );
+=======
+                if (empty($version) || !is_string($version)) {
+                    throw new Exception\InvalidArgumentException('Invalid parameter: "version" must be a non-empty string');
+>>>>>>> pantheon-drops-8/master
                 }
                 $generator['version'] = $version;
             }
             if (isset($uri)) {
+<<<<<<< HEAD
                 if (empty($uri) || ! is_string($uri) || ! Uri::factory($uri)->isValid()) {
                     throw new Exception\InvalidArgumentException(
                         'Invalid parameter: "uri" must be a non-empty string and a valid URI/IRI'
                     );
+=======
+                if (empty($uri) || !is_string($uri) || !Uri::factory($uri)->isValid()) {
+                    throw new Exception\InvalidArgumentException('Invalid parameter: "uri" must be a non-empty string and a valid URI/IRI');
+>>>>>>> pantheon-drops-8/master
                 }
                 $generator['uri'] = $uri;
             }
@@ -277,6 +348,7 @@ class AbstractFeed
      */
     public function setId($id)
     {
+<<<<<<< HEAD
         // @codingStandardsIgnoreStart
         if ((empty($id) || ! is_string($id) || ! Uri::factory($id)->isValid())
             && ! preg_match("#^urn:[a-zA-Z0-9][a-zA-Z0-9\-]{1,31}:([a-zA-Z0-9\(\)\+\,\.\:\=\@\;\$\_\!\*\-]|%[0-9a-fA-F]{2})*#", $id)
@@ -286,6 +358,13 @@ class AbstractFeed
             throw new Exception\InvalidArgumentException(
                 'Invalid parameter: parameter must be a non-empty string and valid URI/IRI'
             );
+=======
+        if ((empty($id) || !is_string($id) || !Uri::factory($id)->isValid())
+            && !preg_match("#^urn:[a-zA-Z0-9][a-zA-Z0-9\-]{1,31}:([a-zA-Z0-9\(\)\+\,\.\:\=\@\;\$\_\!\*\-]|%[0-9a-fA-F]{2})*#", $id)
+            && !$this->_validateTagUri($id)
+        ) {
+            throw new Exception\InvalidArgumentException('Invalid parameter: parameter must be a non-empty string and valid URI/IRI');
+>>>>>>> pantheon-drops-8/master
         }
         $this->data['id'] = $id;
 
@@ -298,6 +377,7 @@ class AbstractFeed
      * @param string $id
      * @return bool
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _validateTagUri($id)
     {
@@ -307,6 +387,11 @@ class AbstractFeed
             $id,
             $matches
         )) {
+=======
+    protected function _validateTagUri($id)
+    {
+        if (preg_match('/^tag:(?P<name>.*),(?P<date>\d{4}-?\d{0,2}-?\d{0,2}):(?P<specific>.*)(.*:)*$/', $id, $matches)) {
+>>>>>>> pantheon-drops-8/master
             $dvalid = false;
             $date = $matches['date'];
             $d6 = strtotime($date);
@@ -340,8 +425,13 @@ class AbstractFeed
      */
     public function setImage(array $data)
     {
+<<<<<<< HEAD
         if (empty($data['uri']) || ! is_string($data['uri'])
             || ! Uri::factory($data['uri'])->isValid()
+=======
+        if (empty($data['uri']) || !is_string($data['uri'])
+            || !Uri::factory($data['uri'])->isValid()
+>>>>>>> pantheon-drops-8/master
         ) {
             throw new Exception\InvalidArgumentException('Invalid parameter: parameter \'uri\''
             . ' must be a non-empty string and valid URI/IRI');
@@ -360,7 +450,11 @@ class AbstractFeed
      */
     public function setLanguage($language)
     {
+<<<<<<< HEAD
         if (empty($language) || ! is_string($language)) {
+=======
+        if (empty($language) || !is_string($language)) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid parameter: parameter must be a non-empty string');
         }
         $this->data['language'] = $language;
@@ -377,10 +471,15 @@ class AbstractFeed
      */
     public function setLink($link)
     {
+<<<<<<< HEAD
         if (empty($link) || ! is_string($link) || ! Uri::factory($link)->isValid()) {
             throw new Exception\InvalidArgumentException(
                 'Invalid parameter: parameter must be a non-empty string and valid URI/IRI'
             );
+=======
+        if (empty($link) || !is_string($link) || !Uri::factory($link)->isValid()) {
+            throw new Exception\InvalidArgumentException('Invalid parameter: parameter must be a non-empty string and valid URI/IRI');
+>>>>>>> pantheon-drops-8/master
         }
         $this->data['link'] = $link;
 
@@ -397,6 +496,7 @@ class AbstractFeed
      */
     public function setFeedLink($link, $type)
     {
+<<<<<<< HEAD
         if (empty($link) || ! is_string($link) || ! Uri::factory($link)->isValid()) {
             throw new Exception\InvalidArgumentException(
                 'Invalid parameter: "link"" must be a non-empty string and valid URI/IRI'
@@ -406,6 +506,13 @@ class AbstractFeed
             throw new Exception\InvalidArgumentException(
                 'Invalid parameter: "type"; You must declare the type of feed the link points to, i.e. RSS, RDF or Atom'
             );
+=======
+        if (empty($link) || !is_string($link) || !Uri::factory($link)->isValid()) {
+            throw new Exception\InvalidArgumentException('Invalid parameter: "link"" must be a non-empty string and valid URI/IRI');
+        }
+        if (!in_array(strtolower($type), ['rss', 'rdf', 'atom'])) {
+            throw new Exception\InvalidArgumentException('Invalid parameter: "type"; You must declare the type of feed the link points to, i.e. RSS, RDF or Atom');
+>>>>>>> pantheon-drops-8/master
         }
         $this->data['feedLinks'][strtolower($type)] = $link;
 
@@ -421,7 +528,11 @@ class AbstractFeed
      */
     public function setTitle($title)
     {
+<<<<<<< HEAD
         if ((empty($title) && ! is_numeric($title)) || ! is_string($title)) {
+=======
+        if (empty($title) || !is_string($title)) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid parameter: parameter must be a non-empty string');
         }
         $this->data['title'] = $title;
@@ -438,7 +549,11 @@ class AbstractFeed
      */
     public function setEncoding($encoding)
     {
+<<<<<<< HEAD
         if (empty($encoding) || ! is_string($encoding)) {
+=======
+        if (empty($encoding) || !is_string($encoding)) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid parameter: parameter must be a non-empty string');
         }
         $this->data['encoding'] = $encoding;
@@ -455,7 +570,11 @@ class AbstractFeed
      */
     public function setBaseUrl($url)
     {
+<<<<<<< HEAD
         if (empty($url) || ! is_string($url) || ! Uri::factory($url)->isValid()) {
+=======
+        if (empty($url) || !is_string($url) || !Uri::factory($url)->isValid()) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid parameter: "url" array value'
             . ' must be a non-empty string and valid URI/IRI');
         }
@@ -473,11 +592,19 @@ class AbstractFeed
      */
     public function addHub($url)
     {
+<<<<<<< HEAD
         if (empty($url) || ! is_string($url) || ! Uri::factory($url)->isValid()) {
             throw new Exception\InvalidArgumentException('Invalid parameter: "url" array value'
             . ' must be a non-empty string and valid URI/IRI');
         }
         if (! isset($this->data['hubs'])) {
+=======
+        if (empty($url) || !is_string($url) || !Uri::factory($url)->isValid()) {
+            throw new Exception\InvalidArgumentException('Invalid parameter: "url" array value'
+            . ' must be a non-empty string and valid URI/IRI');
+        }
+        if (!isset($this->data['hubs'])) {
+>>>>>>> pantheon-drops-8/master
             $this->data['hubs'] = [];
         }
         $this->data['hubs'][] = $url;
@@ -509,21 +636,34 @@ class AbstractFeed
      */
     public function addCategory(array $category)
     {
+<<<<<<< HEAD
         if (! isset($category['term'])) {
+=======
+        if (!isset($category['term'])) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Each category must be an array and '
             . 'contain at least a "term" element containing the machine '
             . ' readable category name');
         }
         if (isset($category['scheme'])) {
             if (empty($category['scheme'])
+<<<<<<< HEAD
                 || ! is_string($category['scheme'])
                 || ! Uri::factory($category['scheme'])->isValid()
+=======
+                || !is_string($category['scheme'])
+                || !Uri::factory($category['scheme'])->isValid()
+>>>>>>> pantheon-drops-8/master
             ) {
                 throw new Exception\InvalidArgumentException('The Atom scheme or RSS domain of'
                 . ' a category must be a valid URI');
             }
         }
+<<<<<<< HEAD
         if (! isset($this->data['categories'])) {
+=======
+        if (!isset($this->data['categories'])) {
+>>>>>>> pantheon-drops-8/master
             $this->data['categories'] = [];
         }
         $this->data['categories'][] = $category;
@@ -568,7 +708,11 @@ class AbstractFeed
      */
     public function getAuthors()
     {
+<<<<<<< HEAD
         if (! array_key_exists('authors', $this->data)) {
+=======
+        if (!array_key_exists('authors', $this->data)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         return $this->data['authors'];
@@ -581,7 +725,11 @@ class AbstractFeed
      */
     public function getCopyright()
     {
+<<<<<<< HEAD
         if (! array_key_exists('copyright', $this->data)) {
+=======
+        if (!array_key_exists('copyright', $this->data)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         return $this->data['copyright'];
@@ -594,7 +742,11 @@ class AbstractFeed
      */
     public function getDateCreated()
     {
+<<<<<<< HEAD
         if (! array_key_exists('dateCreated', $this->data)) {
+=======
+        if (!array_key_exists('dateCreated', $this->data)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         return $this->data['dateCreated'];
@@ -607,7 +759,11 @@ class AbstractFeed
      */
     public function getDateModified()
     {
+<<<<<<< HEAD
         if (! array_key_exists('dateModified', $this->data)) {
+=======
+        if (!array_key_exists('dateModified', $this->data)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         return $this->data['dateModified'];
@@ -620,7 +776,11 @@ class AbstractFeed
      */
     public function getLastBuildDate()
     {
+<<<<<<< HEAD
         if (! array_key_exists('lastBuildDate', $this->data)) {
+=======
+        if (!array_key_exists('lastBuildDate', $this->data)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         return $this->data['lastBuildDate'];
@@ -633,7 +793,11 @@ class AbstractFeed
      */
     public function getDescription()
     {
+<<<<<<< HEAD
         if (! array_key_exists('description', $this->data)) {
+=======
+        if (!array_key_exists('description', $this->data)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         return $this->data['description'];
@@ -646,7 +810,11 @@ class AbstractFeed
      */
     public function getGenerator()
     {
+<<<<<<< HEAD
         if (! array_key_exists('generator', $this->data)) {
+=======
+        if (!array_key_exists('generator', $this->data)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         return $this->data['generator'];
@@ -659,7 +827,11 @@ class AbstractFeed
      */
     public function getId()
     {
+<<<<<<< HEAD
         if (! array_key_exists('id', $this->data)) {
+=======
+        if (!array_key_exists('id', $this->data)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         return $this->data['id'];
@@ -672,7 +844,11 @@ class AbstractFeed
      */
     public function getImage()
     {
+<<<<<<< HEAD
         if (! array_key_exists('image', $this->data)) {
+=======
+        if (!array_key_exists('image', $this->data)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         return $this->data['image'];
@@ -685,7 +861,11 @@ class AbstractFeed
      */
     public function getLanguage()
     {
+<<<<<<< HEAD
         if (! array_key_exists('language', $this->data)) {
+=======
+        if (!array_key_exists('language', $this->data)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         return $this->data['language'];
@@ -698,7 +878,11 @@ class AbstractFeed
      */
     public function getLink()
     {
+<<<<<<< HEAD
         if (! array_key_exists('link', $this->data)) {
+=======
+        if (!array_key_exists('link', $this->data)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         return $this->data['link'];
@@ -711,7 +895,11 @@ class AbstractFeed
      */
     public function getFeedLinks()
     {
+<<<<<<< HEAD
         if (! array_key_exists('feedLinks', $this->data)) {
+=======
+        if (!array_key_exists('feedLinks', $this->data)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         return $this->data['feedLinks'];
@@ -724,7 +912,11 @@ class AbstractFeed
      */
     public function getTitle()
     {
+<<<<<<< HEAD
         if (! array_key_exists('title', $this->data)) {
+=======
+        if (!array_key_exists('title', $this->data)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         return $this->data['title'];
@@ -737,7 +929,11 @@ class AbstractFeed
      */
     public function getEncoding()
     {
+<<<<<<< HEAD
         if (! array_key_exists('encoding', $this->data)) {
+=======
+        if (!array_key_exists('encoding', $this->data)) {
+>>>>>>> pantheon-drops-8/master
             return 'UTF-8';
         }
         return $this->data['encoding'];
@@ -750,7 +946,11 @@ class AbstractFeed
      */
     public function getBaseUrl()
     {
+<<<<<<< HEAD
         if (! array_key_exists('baseUrl', $this->data)) {
+=======
+        if (!array_key_exists('baseUrl', $this->data)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         return $this->data['baseUrl'];
@@ -763,7 +963,11 @@ class AbstractFeed
      */
     public function getHubs()
     {
+<<<<<<< HEAD
         if (! array_key_exists('hubs', $this->data)) {
+=======
+        if (!array_key_exists('hubs', $this->data)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         return $this->data['hubs'];
@@ -776,7 +980,11 @@ class AbstractFeed
      */
     public function getCategories()
     {
+<<<<<<< HEAD
         if (! array_key_exists('categories', $this->data)) {
+=======
+        if (!array_key_exists('categories', $this->data)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         return $this->data['categories'];
@@ -857,18 +1065,28 @@ class AbstractFeed
      * @throws Exception\RuntimeException
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _loadExtensions()
     {
         // @codingStandardsIgnoreEnd
+=======
+    protected function _loadExtensions()
+    {
+>>>>>>> pantheon-drops-8/master
         $all     = Writer::getExtensions();
         $manager = Writer::getExtensionManager();
         $exts    = $all['feed'];
         foreach ($exts as $ext) {
+<<<<<<< HEAD
             if (! $manager->has($ext)) {
                 throw new Exception\RuntimeException(
                     sprintf('Unable to load extension "%s"; could not resolve to class', $ext)
                 );
+=======
+            if (!$manager->has($ext)) {
+                throw new Exception\RuntimeException(sprintf('Unable to load extension "%s"; could not resolve to class', $ext));
+>>>>>>> pantheon-drops-8/master
             }
             $this->extensions[$ext] = $manager->get($ext);
             $this->extensions[$ext]->setEncoding($this->getEncoding());

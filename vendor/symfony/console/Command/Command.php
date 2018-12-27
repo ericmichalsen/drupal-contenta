@@ -150,7 +150,11 @@ class Command
      * execute() method, you set the code to execute by passing
      * a Closure to the setCode() method.
      *
+<<<<<<< HEAD
      * @return int|null null or 0 if everything went fine, or an error code
+=======
+     * @return null|int null or 0 if everything went fine, or an error code
+>>>>>>> pantheon-drops-8/master
      *
      * @throws LogicException When this abstract method is not implemented
      *
@@ -173,6 +177,7 @@ class Command
     }
 
     /**
+<<<<<<< HEAD
      * Initializes the command after the input has been bound and before the input
      * is validated.
      *
@@ -181,6 +186,12 @@ class Command
      *
      * @see InputInterface::bind()
      * @see InputInterface::validate()
+=======
+     * Initializes the command just after the input has been validated.
+     *
+     * This is mainly useful when a lot of commands extends one main command
+     * where some things need to be initialized based on the input arguments and options.
+>>>>>>> pantheon-drops-8/master
      */
     protected function initialize(InputInterface $input, OutputInterface $output)
     {
@@ -309,13 +320,23 @@ class Command
 
         $this->definition->addOptions($this->application->getDefinition()->getOptions());
 
+<<<<<<< HEAD
         $this->applicationDefinitionMerged = true;
 
+=======
+>>>>>>> pantheon-drops-8/master
         if ($mergeArgs) {
             $currentArguments = $this->definition->getArguments();
             $this->definition->setArguments($this->application->getDefinition()->getArguments());
             $this->definition->addArguments($currentArguments);
+<<<<<<< HEAD
 
+=======
+        }
+
+        $this->applicationDefinitionMerged = true;
+        if ($mergeArgs) {
+>>>>>>> pantheon-drops-8/master
             $this->applicationDefinitionMergedWithArgs = true;
         }
     }
@@ -368,12 +389,19 @@ class Command
     /**
      * Adds an argument.
      *
+<<<<<<< HEAD
      * @param string               $name        The argument name
      * @param int|null             $mode        The argument mode: self::REQUIRED or self::OPTIONAL
      * @param string               $description A description text
      * @param string|string[]|null $default     The default value (for self::OPTIONAL mode only)
      *
      * @throws InvalidArgumentException When argument mode is not valid
+=======
+     * @param string $name        The argument name
+     * @param int    $mode        The argument mode: InputArgument::REQUIRED or InputArgument::OPTIONAL
+     * @param string $description A description text
+     * @param mixed  $default     The default value (for InputArgument::OPTIONAL mode only)
+>>>>>>> pantheon-drops-8/master
      *
      * @return $this
      */
@@ -387,6 +415,7 @@ class Command
     /**
      * Adds an option.
      *
+<<<<<<< HEAD
      * @param string                        $name        The option name
      * @param string|array                  $shortcut    The shortcuts, can be null, a string of shortcuts delimited by | or an array of shortcuts
      * @param int|null                      $mode        The option mode: One of the VALUE_* constants
@@ -394,6 +423,13 @@ class Command
      * @param string|string[]|int|bool|null $default     The default value (must be null for self::VALUE_NONE)
      *
      * @throws InvalidArgumentException If option mode is invalid or incompatible
+=======
+     * @param string $name        The option name
+     * @param string $shortcut    The shortcut (can be null)
+     * @param int    $mode        The option mode: One of the InputOption::VALUE_* constants
+     * @param string $description A description text
+     * @param mixed  $default     The default value (must be null for InputOption::VALUE_NONE)
+>>>>>>> pantheon-drops-8/master
      *
      * @return $this
      */

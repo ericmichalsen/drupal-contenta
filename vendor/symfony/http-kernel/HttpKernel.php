@@ -263,9 +263,12 @@ class HttpKernel implements HttpKernelInterface, TerminableInterface
         }
     }
 
+<<<<<<< HEAD
     /**
      * Returns a human-readable string for the specified variable.
      */
+=======
+>>>>>>> pantheon-drops-8/master
     private function varToString($var)
     {
         if (\is_object($var)) {

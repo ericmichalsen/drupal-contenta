@@ -4,6 +4,10 @@ namespace GuzzleHttp\Handler;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Promise\FulfilledPromise;
+<<<<<<< HEAD
+=======
+use GuzzleHttp\Promise\RejectedPromise;
+>>>>>>> pantheon-drops-8/master
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7;
 use GuzzleHttp\TransferStats;
@@ -60,7 +64,10 @@ class StreamHandler
             if (strpos($message, 'getaddrinfo') // DNS lookup failed
                 || strpos($message, 'Connection refused')
                 || strpos($message, "couldn't connect to host") // error on HHVM
+<<<<<<< HEAD
                 || strpos($message, "connection attempt failed")
+=======
+>>>>>>> pantheon-drops-8/master
             ) {
                 $e = new ConnectException($e->getMessage(), $request, $e);
             }
@@ -103,7 +110,11 @@ class StreamHandler
         $status = $parts[1];
         $reason = isset($parts[2]) ? $parts[2] : null;
         $headers = \GuzzleHttp\headers_from_lines($hdrs);
+<<<<<<< HEAD
         list($stream, $headers) = $this->checkDecode($options, $headers, $stream);
+=======
+        list ($stream, $headers) = $this->checkDecode($options, $headers, $stream);
+>>>>>>> pantheon-drops-8/master
         $stream = Psr7\stream_for($stream);
         $sink = $stream;
 
@@ -276,7 +287,11 @@ class StreamHandler
         }
 
         $params = [];
+<<<<<<< HEAD
         $context = $this->getDefaultContext($request);
+=======
+        $context = $this->getDefaultContext($request, $options);
+>>>>>>> pantheon-drops-8/master
 
         if (isset($options['on_headers']) && !is_callable($options['on_headers'])) {
             throw new \InvalidArgumentException('on_headers must be callable');
@@ -307,6 +322,10 @@ class StreamHandler
             && isset($options['auth'][2])
             && 'ntlm' == $options['auth'][2]
         ) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> pantheon-drops-8/master
             throw new \InvalidArgumentException('Microsoft NTLM authentication only supported with curl handler');
         }
 

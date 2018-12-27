@@ -21,6 +21,11 @@ interface InputAwareInterface
 {
     /**
      * Sets the Console Input.
+<<<<<<< HEAD
+=======
+     *
+     * @param InputInterface
+>>>>>>> pantheon-drops-8/master
      */
     public function setInput(InputInterface $input);
 }

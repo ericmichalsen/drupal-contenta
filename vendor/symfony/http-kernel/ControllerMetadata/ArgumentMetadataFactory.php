@@ -105,7 +105,11 @@ final class ArgumentMetadataFactory implements ArgumentMetadataFactoryInterface
      *
      * @param \ReflectionParameter $parameter
      *
+<<<<<<< HEAD
      * @return string|null
+=======
+     * @return null|string
+>>>>>>> pantheon-drops-8/master
      */
     private function getType(\ReflectionParameter $parameter, \ReflectionFunctionAbstract $function)
     {

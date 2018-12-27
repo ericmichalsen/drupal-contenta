@@ -31,7 +31,11 @@
         "symfony/polyfill-ctype": "^1.8"
     },
     "require-dev": {
+<<<<<<< HEAD
         "symfony/phpunit-bridge": "^3.4.19|^4.1.8",
+=======
+        "symfony/phpunit-bridge": "^3.3",
+>>>>>>> pantheon-drops-8/master
         "symfony/debug": "^2.7",
         "psr/container": "^1.0"
     },
@@ -45,7 +49,11 @@
     },
     "extra": {
         "branch-alias": {
+<<<<<<< HEAD
             "dev-master": "1.36-dev"
+=======
+            "dev-master": "1.35-dev"
+>>>>>>> pantheon-drops-8/master
         }
     }
 }

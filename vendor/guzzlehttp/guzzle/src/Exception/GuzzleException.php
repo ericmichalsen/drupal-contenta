@@ -1,6 +1,7 @@
 <?php
 namespace GuzzleHttp\Exception;
 
+<<<<<<< HEAD
 /**
  * @method string getMessage()
  * @method \Throwable|null getPrevious()
@@ -10,4 +11,6 @@ namespace GuzzleHttp\Exception;
  * @method array getTrace()
  * @method string getTraceAsString()
  */
+=======
+>>>>>>> pantheon-drops-8/master
 interface GuzzleException {}

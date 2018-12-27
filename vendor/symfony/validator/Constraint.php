@@ -70,7 +70,15 @@ abstract class Constraint
     public static function getErrorName($errorCode)
     {
         if (!isset(static::$errorNames[$errorCode])) {
+<<<<<<< HEAD
             throw new InvalidArgumentException(sprintf('The error code "%s" does not exist for constraint of type "%s".', $errorCode, \get_called_class()));
+=======
+            throw new InvalidArgumentException(sprintf(
+                'The error code "%s" does not exist for constraint of type "%s".',
+                $errorCode,
+                \get_called_class()
+            ));
+>>>>>>> pantheon-drops-8/master
         }
 
         return static::$errorNames[$errorCode];
@@ -120,7 +128,11 @@ abstract class Constraint
         if (\is_array($options)) {
             reset($options);
         }
+<<<<<<< HEAD
         if ($options && \is_array($options) && \is_string(key($options))) {
+=======
+        if (\is_array($options) && \count($options) > 0 && \is_string(key($options))) {
+>>>>>>> pantheon-drops-8/master
             foreach ($options as $option => $value) {
                 if (array_key_exists($option, $knownOptions)) {
                     $this->$option = $value;
@@ -133,7 +145,13 @@ abstract class Constraint
             $option = $this->getDefaultOption();
 
             if (null === $option) {
+<<<<<<< HEAD
                 throw new ConstraintDefinitionException(sprintf('No default option is configured for constraint %s', \get_class($this)));
+=======
+                throw new ConstraintDefinitionException(
+                    sprintf('No default option is configured for constraint %s', \get_class($this))
+                );
+>>>>>>> pantheon-drops-8/master
             }
 
             if (array_key_exists($option, $knownOptions)) {
@@ -145,11 +163,25 @@ abstract class Constraint
         }
 
         if (\count($invalidOptions) > 0) {
+<<<<<<< HEAD
             throw new InvalidOptionsException(sprintf('The options "%s" do not exist in constraint %s', implode('", "', $invalidOptions), \get_class($this)), $invalidOptions);
         }
 
         if (\count($missingOptions) > 0) {
             throw new MissingOptionsException(sprintf('The options "%s" must be set for constraint %s', implode('", "', array_keys($missingOptions)), \get_class($this)), array_keys($missingOptions));
+=======
+            throw new InvalidOptionsException(
+                sprintf('The options "%s" do not exist in constraint %s', implode('", "', $invalidOptions), \get_class($this)),
+                $invalidOptions
+            );
+        }
+
+        if (\count($missingOptions) > 0) {
+            throw new MissingOptionsException(
+                sprintf('The options "%s" must be set for constraint %s', implode('", "', array_keys($missingOptions)), \get_class($this)),
+                array_keys($missingOptions)
+            );
+>>>>>>> pantheon-drops-8/master
         }
     }
 

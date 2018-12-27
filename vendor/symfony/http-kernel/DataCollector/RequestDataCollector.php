@@ -380,12 +380,17 @@ class RequestDataCollector extends DataCollector implements EventSubscriberInter
         if ($controller instanceof \Closure) {
             $r = new \ReflectionFunction($controller);
 
+<<<<<<< HEAD
             $controller = array(
+=======
+            return array(
+>>>>>>> pantheon-drops-8/master
                 'class' => $r->getName(),
                 'method' => null,
                 'file' => $r->getFileName(),
                 'line' => $r->getStartLine(),
             );
+<<<<<<< HEAD
 
             if (false !== strpos($r->name, '{closure}')) {
                 return $controller;
@@ -399,6 +404,8 @@ class RequestDataCollector extends DataCollector implements EventSubscriberInter
             }
 
             return $controller;
+=======
+>>>>>>> pantheon-drops-8/master
         }
 
         if (\is_object($controller)) {

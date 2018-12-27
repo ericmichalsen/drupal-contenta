@@ -325,7 +325,11 @@ class Inline
             if (null !== $delimiters) {
                 $tmp = ltrim(substr($scalar, $i), ' ');
                 if ('' === $tmp) {
+<<<<<<< HEAD
                     throw new ParseException(sprintf('Unexpected end of line, expected one of "%s".', implode('', $delimiters)), self::$parsedLineNumber + 1, $scalar, self::$parsedFilename);
+=======
+                    throw new ParseException(sprintf('Unexpected end of line, expected one of "%s".', implode($delimiters)), self::$parsedLineNumber + 1, $scalar, self::$parsedFilename);
+>>>>>>> pantheon-drops-8/master
                 }
                 if (!\in_array($tmp[0], $delimiters)) {
                     throw new ParseException(sprintf('Unexpected characters (%s).', substr($scalar, $i)), self::$parsedLineNumber + 1, $scalar, self::$parsedFilename);
@@ -788,7 +792,11 @@ class Inline
      * @param int    &$i
      * @param int    $flags
      *
+<<<<<<< HEAD
      * @return string|null
+=======
+     * @return null|string
+>>>>>>> pantheon-drops-8/master
      */
     private static function parseTag($value, &$i, $flags)
     {

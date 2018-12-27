@@ -120,7 +120,14 @@ abstract class AbstractNormalizer extends SerializerAwareNormalizer implements N
     {
         foreach ($callbacks as $attribute => $callback) {
             if (!\is_callable($callback)) {
+<<<<<<< HEAD
                 throw new InvalidArgumentException(sprintf('The given callback for attribute "%s" is not callable.', $attribute));
+=======
+                throw new InvalidArgumentException(sprintf(
+                    'The given callback for attribute "%s" is not callable.',
+                    $attribute
+                ));
+>>>>>>> pantheon-drops-8/master
             }
         }
         $this->callbacks = $callbacks;
@@ -376,7 +383,17 @@ abstract class AbstractNormalizer extends SerializerAwareNormalizer implements N
                 } elseif ($constructorParameter->isDefaultValueAvailable()) {
                     $params[] = $constructorParameter->getDefaultValue();
                 } else {
+<<<<<<< HEAD
                     throw new RuntimeException(sprintf('Cannot create an instance of %s from serialized data because its constructor requires parameter "%s" to be present.', $class, $constructorParameter->name));
+=======
+                    throw new RuntimeException(
+                        sprintf(
+                            'Cannot create an instance of %s from serialized data because its constructor requires parameter "%s" to be present.',
+                            $class,
+                            $constructorParameter->name
+                        )
+                    );
+>>>>>>> pantheon-drops-8/master
                 }
             }
 

@@ -1,5 +1,6 @@
 # Release Notes
 
+<<<<<<< HEAD
 2.4.0 (2018-11-17)
 
 - #148: Improve performance by moving sequence matching 
@@ -15,6 +16,8 @@
 - #136: Handle illegal self-closing according to spec (fixed by #137)
 - #141: Minor fixes in the README
 
+=======
+>>>>>>> pantheon-drops-8/master
 2.3.0 (2017-09-04)
 
 - #129: image within inline svg breaks system (fixed by #133) 

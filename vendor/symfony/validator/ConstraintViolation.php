@@ -79,13 +79,21 @@ class ConstraintViolation implements ConstraintViolationInterface
         }
 
         $propertyPath = (string) $this->propertyPath;
+<<<<<<< HEAD
         $code = (string) $this->code;
+=======
+        $code = $this->code;
+>>>>>>> pantheon-drops-8/master
 
         if ('' !== $propertyPath && '[' !== $propertyPath[0] && '' !== $class) {
             $class .= '.';
         }
 
+<<<<<<< HEAD
         if ('' !== $code) {
+=======
+        if (!empty($code)) {
+>>>>>>> pantheon-drops-8/master
             $code = ' (code '.$code.')';
         }
 

@@ -97,7 +97,11 @@ interface ExecutionContextInterface
      *     {
      *         $validator = $this->context->getValidator();
      *
+<<<<<<< HEAD
      *         $violations = $validator->validate($value, new Length(array('min' => 3)));
+=======
+     *         $violations = $validator->validateValue($value, new Length(array('min' => 3)));
+>>>>>>> pantheon-drops-8/master
      *
      *         if (count($violations) > 0) {
      *             // ...
@@ -112,7 +116,11 @@ interface ExecutionContextInterface
      * Returns the currently validated object.
      *
      * If the validator is currently validating a class constraint, the
+<<<<<<< HEAD
      * object of that class is returned. If it is validating a property or
+=======
+     * object of that class is returned. If it is a validating a property or
+>>>>>>> pantheon-drops-8/master
      * getter constraint, the object that the property/getter belongs to is
      * returned.
      *

@@ -127,6 +127,10 @@ class TreeBuildingRules
 
     protected function closeIfCurrentMatches($ele, $current, $match)
     {
+<<<<<<< HEAD
+=======
+        $tname = $current->tagName;
+>>>>>>> pantheon-drops-8/master
         if (in_array($current->tagName, $match)) {
             $current->parentNode->appendChild($ele);
         } else {

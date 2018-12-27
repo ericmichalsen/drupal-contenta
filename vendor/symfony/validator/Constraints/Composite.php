@@ -99,7 +99,17 @@ abstract class Composite extends Constraint
                 $excessGroups = array_diff($constraint->groups, $this->groups);
 
                 if (\count($excessGroups) > 0) {
+<<<<<<< HEAD
                     throw new ConstraintDefinitionException(sprintf('The group(s) "%s" passed to the constraint %s should also be passed to its containing constraint %s', implode('", "', $excessGroups), \get_class($constraint), \get_class($this)));
+=======
+                    throw new ConstraintDefinitionException(sprintf(
+                        'The group(s) "%s" passed to the constraint %s '.
+                        'should also be passed to its containing constraint %s',
+                        implode('", "', $excessGroups),
+                        \get_class($constraint),
+                        \get_class($this)
+                    ));
+>>>>>>> pantheon-drops-8/master
                 }
             } else {
                 $constraint->groups = $this->groups;

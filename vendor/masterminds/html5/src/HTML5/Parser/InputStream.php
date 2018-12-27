@@ -1,5 +1,8 @@
 <?php
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
 namespace Masterminds\HTML5\Parser;
 
 /**
@@ -10,11 +13,18 @@ namespace Masterminds\HTML5\Parser;
  *
  * Currently provided InputStream implementations include
  * FileInputStream and StringInputStream.
+<<<<<<< HEAD
  *
  * @deprecated since 2.4, to remove in 3.0. Use a string in the scanner instead.
  */
 interface InputStream extends \Iterator
 {
+=======
+ */
+interface InputStream extends \Iterator
+{
+
+>>>>>>> pantheon-drops-8/master
     /**
      * Returns the current line that is being consumed.
      *

@@ -107,6 +107,10 @@ class UriTemplate
         $useQuery = self::$operatorHash[$parsed['operator']]['query'];
 
         foreach ($parsed['values'] as $value) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> pantheon-drops-8/master
             if (!isset($this->variables[$value['value']])) {
                 continue;
             }
@@ -116,9 +120,17 @@ class UriTemplate
             $expanded = '';
 
             if (is_array($variable)) {
+<<<<<<< HEAD
                 $isAssoc = $this->isAssoc($variable);
                 $kvp = [];
                 foreach ($variable as $key => $var) {
+=======
+
+                $isAssoc = $this->isAssoc($variable);
+                $kvp = [];
+                foreach ($variable as $key => $var) {
+
+>>>>>>> pantheon-drops-8/master
                     if ($isAssoc) {
                         $key = rawurlencode($key);
                         $isNestedArray = is_array($var);
@@ -176,6 +188,10 @@ class UriTemplate
                     }
                     $expanded = implode(',', $kvp);
                 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> pantheon-drops-8/master
             } else {
                 if ($value['modifier'] === ':') {
                     $variable = substr($variable, 0, $value['position']);

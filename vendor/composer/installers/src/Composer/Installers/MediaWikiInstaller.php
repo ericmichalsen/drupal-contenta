@@ -4,7 +4,10 @@ namespace Composer\Installers;
 class MediaWikiInstaller extends BaseInstaller
 {
     protected $locations = array(
+<<<<<<< HEAD
         'core' => 'core/',
+=======
+>>>>>>> pantheon-drops-8/master
         'extension' => 'extensions/{$name}/',
         'skin' => 'skins/{$name}/',
     );

@@ -106,7 +106,11 @@ class StaticPrefixCollection
      * @param string                       $prefix
      * @param mixed                        $route
      *
+<<<<<<< HEAD
      * @return StaticPrefixCollection|null
+=======
+     * @return null|StaticPrefixCollection
+>>>>>>> pantheon-drops-8/master
      */
     private function groupWithItem($item, $prefix, $route)
     {

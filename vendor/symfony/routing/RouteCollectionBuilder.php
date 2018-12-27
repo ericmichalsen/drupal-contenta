@@ -46,7 +46,11 @@ class RouteCollectionBuilder
     /**
      * Import an external routing resource and returns the RouteCollectionBuilder.
      *
+<<<<<<< HEAD
      *     $routes->import('blog.yml', '/blog');
+=======
+     *  $routes->import('blog.yml', '/blog');
+>>>>>>> pantheon-drops-8/master
      *
      * @param mixed       $resource
      * @param string|null $prefix

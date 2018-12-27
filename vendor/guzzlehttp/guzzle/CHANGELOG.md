@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Change Log
 
 ## 6.3.3 - 2018-04-22
@@ -22,6 +23,9 @@
 
 + Minor code cleanups, documentation fixes and clarifications.
 
+=======
+# CHANGELOG
+>>>>>>> pantheon-drops-8/master
 
 ## 6.3.0 - 2017-06-22
 

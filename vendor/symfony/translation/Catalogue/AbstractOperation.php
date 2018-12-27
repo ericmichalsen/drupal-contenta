@@ -31,7 +31,11 @@ abstract class AbstractOperation implements OperationInterface
     protected $result;
 
     /**
+<<<<<<< HEAD
      * @var array|null The domains affected by this operation
+=======
+     * @var null|array The domains affected by this operation
+>>>>>>> pantheon-drops-8/master
      */
     private $domains;
 
@@ -39,6 +43,7 @@ abstract class AbstractOperation implements OperationInterface
      * This array stores 'all', 'new' and 'obsolete' messages for all valid domains.
      *
      * The data structure of this array is as follows:
+<<<<<<< HEAD
      *
      *     array(
      *         'domain 1' => array(
@@ -53,6 +58,23 @@ abstract class AbstractOperation implements OperationInterface
      *         ),
      *         ...
      *     )
+=======
+     * ```php
+     * array(
+     *     'domain 1' => array(
+     *         'all' => array(...),
+     *         'new' => array(...),
+     *         'obsolete' => array(...)
+     *     ),
+     *     'domain 2' => array(
+     *         'all' => array(...),
+     *         'new' => array(...),
+     *         'obsolete' => array(...)
+     *     ),
+     *     ...
+     * )
+     * ```
+>>>>>>> pantheon-drops-8/master
      *
      * @var array The array that stores 'all', 'new' and 'obsolete' messages
      */

@@ -168,7 +168,11 @@ abstract class AbstractFeed implements Feed\FeedInterface
      */
     public function saveXml()
     {
+<<<<<<< HEAD
         return $this->getDomDocument()->saveXML();
+=======
+        return $this->getDomDocument()->saveXml();
+>>>>>>> pantheon-drops-8/master
     }
 
     /**

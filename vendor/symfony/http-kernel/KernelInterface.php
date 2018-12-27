@@ -131,7 +131,11 @@ interface KernelInterface extends HttpKernelInterface, \Serializable
     /**
      * Gets the current container.
      *
+<<<<<<< HEAD
      * @return ContainerInterface|null A ContainerInterface instance or null when the Kernel is shutdown
+=======
+     * @return ContainerInterface A ContainerInterface instance
+>>>>>>> pantheon-drops-8/master
      */
     public function getContainer();
 

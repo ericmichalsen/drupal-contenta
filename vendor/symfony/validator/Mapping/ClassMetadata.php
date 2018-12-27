@@ -180,11 +180,25 @@ class ClassMetadata extends GenericMetadata implements ClassMetadataInterface
     public function addConstraint(Constraint $constraint)
     {
         if (!\in_array(Constraint::CLASS_CONSTRAINT, (array) $constraint->getTargets())) {
+<<<<<<< HEAD
             throw new ConstraintDefinitionException(sprintf('The constraint "%s" cannot be put on classes.', \get_class($constraint)));
         }
 
         if ($constraint instanceof Valid) {
             throw new ConstraintDefinitionException(sprintf('The constraint "%s" cannot be put on classes.', \get_class($constraint)));
+=======
+            throw new ConstraintDefinitionException(sprintf(
+                'The constraint "%s" cannot be put on classes.',
+                \get_class($constraint)
+            ));
+        }
+
+        if ($constraint instanceof Valid) {
+            throw new ConstraintDefinitionException(sprintf(
+                'The constraint "%s" cannot be put on classes.',
+                \get_class($constraint)
+            ));
+>>>>>>> pantheon-drops-8/master
         }
 
         if ($constraint instanceof Traverse) {
@@ -397,7 +411,11 @@ class ClassMetadata extends GenericMetadata implements ClassMetadataInterface
     /**
      * Sets the default group sequence for this class.
      *
+<<<<<<< HEAD
      * @param string[]|GroupSequence $groupSequence An array of group names
+=======
+     * @param array $groupSequence An array of group names
+>>>>>>> pantheon-drops-8/master
      *
      * @return $this
      *

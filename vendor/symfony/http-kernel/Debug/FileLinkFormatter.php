@@ -100,7 +100,11 @@ class FileLinkFormatter implements \Serializable
                 }
 
                 return array(
+<<<<<<< HEAD
                     $request->getSchemeAndHttpHost().$request->getBasePath().$this->urlFormat,
+=======
+                    $request->getSchemeAndHttpHost().$request->getBaseUrl().$this->urlFormat,
+>>>>>>> pantheon-drops-8/master
                     $this->baseDir.\DIRECTORY_SEPARATOR, '',
                 );
             }

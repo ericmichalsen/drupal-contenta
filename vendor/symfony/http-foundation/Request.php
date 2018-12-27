@@ -377,7 +377,11 @@ class Request
 
         if (isset($components['port'])) {
             $server['SERVER_PORT'] = $components['port'];
+<<<<<<< HEAD
             $server['HTTP_HOST'] .= ':'.$components['port'];
+=======
+            $server['HTTP_HOST'] = $server['HTTP_HOST'].':'.$components['port'];
+>>>>>>> pantheon-drops-8/master
         }
 
         if (isset($components['user'])) {
@@ -1186,7 +1190,11 @@ class Request
         }
 
         $sourceDirs = explode('/', isset($basePath[0]) && '/' === $basePath[0] ? substr($basePath, 1) : $basePath);
+<<<<<<< HEAD
         $targetDirs = explode('/', substr($path, 1));
+=======
+        $targetDirs = explode('/', isset($path[0]) && '/' === $path[0] ? substr($path, 1) : $path);
+>>>>>>> pantheon-drops-8/master
         array_pop($sourceDirs);
         $targetFile = array_pop($targetDirs);
 
@@ -1419,7 +1427,11 @@ class Request
     {
         $canonicalMimeType = null;
         if (false !== $pos = strpos($mimeType, ';')) {
+<<<<<<< HEAD
             $canonicalMimeType = trim(substr($mimeType, 0, $pos));
+=======
+            $canonicalMimeType = substr($mimeType, 0, $pos);
+>>>>>>> pantheon-drops-8/master
         }
 
         if (null === static::$formats) {
@@ -1460,7 +1472,11 @@ class Request
      *  * _format request attribute
      *  * $default
      *
+<<<<<<< HEAD
      * @param string|null $default The default format
+=======
+     * @param string $default The default format
+>>>>>>> pantheon-drops-8/master
      *
      * @return string The request format
      */
@@ -1586,7 +1602,11 @@ class Request
      *
      * @see https://tools.ietf.org/html/rfc7231#section-4.2.3
      *
+<<<<<<< HEAD
      * @return bool True for GET and HEAD, false otherwise
+=======
+     * @return bool
+>>>>>>> pantheon-drops-8/master
      */
     public function isMethodCacheable()
     {
@@ -1836,6 +1856,7 @@ class Request
             $this->server->remove('IIS_WasUrlRewritten');
         } elseif ($this->server->has('REQUEST_URI')) {
             $requestUri = $this->server->get('REQUEST_URI');
+<<<<<<< HEAD
 
             // HTTP proxy reqs setup request URI with scheme and host [and port] + the URL path, only use URL path
             $uriComponents = parse_url($requestUri);
@@ -1846,6 +1867,12 @@ class Request
 
             if (isset($uriComponents['query'])) {
                 $requestUri .= '?'.$uriComponents['query'];
+=======
+            // HTTP proxy reqs setup request URI with scheme and host [and port] + the URL path, only use URL path
+            $schemeAndHttpHost = $this->getSchemeAndHttpHost();
+            if (0 === strpos($requestUri, $schemeAndHttpHost)) {
+                $requestUri = substr($requestUri, \strlen($schemeAndHttpHost));
+>>>>>>> pantheon-drops-8/master
             }
         } elseif ($this->server->has('ORIG_PATH_INFO')) {
             // IIS 5.0, PHP as CGI

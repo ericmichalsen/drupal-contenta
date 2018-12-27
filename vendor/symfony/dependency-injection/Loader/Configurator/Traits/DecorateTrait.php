@@ -18,8 +18,13 @@ trait DecorateTrait
     /**
      * Sets the service that this service is decorating.
      *
+<<<<<<< HEAD
      * @param string|null $id        The decorated service id, use null to remove decoration
      * @param string|null $renamedId The new decorated service id
+=======
+     * @param null|string $id        The decorated service id, use null to remove decoration
+     * @param null|string $renamedId The new decorated service id
+>>>>>>> pantheon-drops-8/master
      * @param int         $priority  The priority of decoration
      *
      * @return $this

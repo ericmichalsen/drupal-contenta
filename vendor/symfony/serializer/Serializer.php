@@ -29,9 +29,15 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
  * objects are turned into arrays by normalizers.
  * arrays are turned into various output formats by encoders.
  *
+<<<<<<< HEAD
  *     $serializer->serialize($obj, 'xml')
  *     $serializer->decode($data, 'xml')
  *     $serializer->denormalize($data, 'Class', 'xml')
+=======
+ * $serializer->serialize($obj, 'xml')
+ * $serializer->decode($data, 'xml')
+ * $serializer->denormalize($data, 'Class', 'xml')
+>>>>>>> pantheon-drops-8/master
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>

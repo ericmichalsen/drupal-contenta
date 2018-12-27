@@ -22,8 +22,11 @@ class Twig_SimpleTest
     protected $callable;
     protected $options;
 
+<<<<<<< HEAD
     private $arguments = array();
 
+=======
+>>>>>>> pantheon-drops-8/master
     public function __construct($name, $callable, array $options = array())
     {
         $this->name = $name;
@@ -70,6 +73,7 @@ class Twig_SimpleTest
     {
         return $this->options['alternative'];
     }
+<<<<<<< HEAD
 
     public function setArguments($arguments)
     {
@@ -80,6 +84,8 @@ class Twig_SimpleTest
     {
         return $this->arguments;
     }
+=======
+>>>>>>> pantheon-drops-8/master
 }
 
 class_alias('Twig_SimpleTest', 'Twig\TwigTest', false);

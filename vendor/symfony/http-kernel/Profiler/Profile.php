@@ -92,7 +92,11 @@ class Profile
     /**
      * Returns the parent token.
      *
+<<<<<<< HEAD
      * @return string|null The parent token
+=======
+     * @return null|string The parent token
+>>>>>>> pantheon-drops-8/master
      */
     public function getParentToken()
     {

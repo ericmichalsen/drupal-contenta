@@ -20,11 +20,19 @@ use Symfony\Component\Console\Formatter\OutputFormatterInterface;
  *
  * Usage:
  *
+<<<<<<< HEAD
  *     $output = new StreamOutput(fopen('php://stdout', 'w'));
  *
  * As `StreamOutput` can use any stream, you can also use a file:
  *
  *     $output = new StreamOutput(fopen('/path/to/output.log', 'a', false));
+=======
+ * $output = new StreamOutput(fopen('php://stdout', 'w'));
+ *
+ * As `StreamOutput` can use any stream, you can also use a file:
+ *
+ * $output = new StreamOutput(fopen('/path/to/output.log', 'a', false));
+>>>>>>> pantheon-drops-8/master
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
@@ -70,11 +78,15 @@ class StreamOutput extends Output
      */
     protected function doWrite($message, $newline)
     {
+<<<<<<< HEAD
         if ($newline) {
             $message .= PHP_EOL;
         }
 
         if (false === @fwrite($this->stream, $message)) {
+=======
+        if (false === @fwrite($this->stream, $message) || ($newline && (false === @fwrite($this->stream, PHP_EOL)))) {
+>>>>>>> pantheon-drops-8/master
             // should never happen
             throw new RuntimeException('Unable to write output.');
         }

@@ -25,10 +25,13 @@ class CountValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
+<<<<<<< HEAD
         if (!$constraint instanceof Count) {
             throw new UnexpectedTypeException($constraint, __NAMESPACE__.'\Count');
         }
 
+=======
+>>>>>>> pantheon-drops-8/master
         if (null === $value) {
             return;
         }

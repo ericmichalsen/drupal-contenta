@@ -26,11 +26,14 @@ use Doctrine\Common\Collections\Expr\ClosureExpressionVisitor;
 /**
  * An ArrayCollection is a Collection implementation that wraps a regular PHP array.
  *
+<<<<<<< HEAD
  * Warning: Using (un-)serialize() on a collection is not a supported use-case
  * and may break when we change the internals in the future. If you need to
  * serialize a collection use {@link toArray()} and reconstruct the collection
  * manually.
  *
+=======
+>>>>>>> pantheon-drops-8/master
  * @since  2.0
  * @author Guilherme Blanco <guilhermeblanco@hotmail.com>
  * @author Jonathan Wage <jonwage@gmail.com>
@@ -50,12 +53,17 @@ class ArrayCollection implements Collection, Selectable
      *
      * @param array $elements
      */
+<<<<<<< HEAD
     public function __construct(array $elements = [])
+=======
+    public function __construct(array $elements = array())
+>>>>>>> pantheon-drops-8/master
     {
         $this->elements = $elements;
     }
 
     /**
+<<<<<<< HEAD
      * Creates a new instance from the specified elements.
      *
      * This method is provided for derived classes to specify how a new
@@ -71,6 +79,8 @@ class ArrayCollection implements Collection, Selectable
     }
 
     /**
+=======
+>>>>>>> pantheon-drops-8/master
      * {@inheritDoc}
      */
     public function toArray()
@@ -177,8 +187,12 @@ class ArrayCollection implements Collection, Selectable
     public function offsetSet($offset, $value)
     {
         if ( ! isset($offset)) {
+<<<<<<< HEAD
             $this->add($value);
             return;
+=======
+            return $this->add($value);
+>>>>>>> pantheon-drops-8/master
         }
 
         $this->set($offset, $value);
@@ -191,7 +205,11 @@ class ArrayCollection implements Collection, Selectable
      */
     public function offsetUnset($offset)
     {
+<<<<<<< HEAD
         $this->remove($offset);
+=======
+        return $this->remove($offset);
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -237,7 +255,11 @@ class ArrayCollection implements Collection, Selectable
      */
     public function get($key)
     {
+<<<<<<< HEAD
         return $this->elements[$key] ?? null;
+=======
+        return isset($this->elements[$key]) ? $this->elements[$key] : null;
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -275,9 +297,15 @@ class ArrayCollection implements Collection, Selectable
     /**
      * {@inheritDoc}
      */
+<<<<<<< HEAD
     public function add($element)
     {
         $this->elements[] = $element;
+=======
+    public function add($value)
+    {
+        $this->elements[] = $value;
+>>>>>>> pantheon-drops-8/master
 
         return true;
     }
@@ -302,22 +330,36 @@ class ArrayCollection implements Collection, Selectable
 
     /**
      * {@inheritDoc}
+<<<<<<< HEAD
      *
      * @return static
      */
     public function map(Closure $func)
     {
         return $this->createFrom(array_map($func, $this->elements));
+=======
+     */
+    public function map(Closure $func)
+    {
+        return new static(array_map($func, $this->elements));
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
      * {@inheritDoc}
+<<<<<<< HEAD
      *
      * @return static
      */
     public function filter(Closure $p)
     {
         return $this->createFrom(array_filter($this->elements, $p));
+=======
+     */
+    public function filter(Closure $p)
+    {
+        return new static(array_filter($this->elements, $p));
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -339,7 +381,11 @@ class ArrayCollection implements Collection, Selectable
      */
     public function partition(Closure $p)
     {
+<<<<<<< HEAD
         $matches = $noMatches = [];
+=======
+        $matches = $noMatches = array();
+>>>>>>> pantheon-drops-8/master
 
         foreach ($this->elements as $key => $element) {
             if ($p($key, $element)) {
@@ -349,7 +395,11 @@ class ArrayCollection implements Collection, Selectable
             }
         }
 
+<<<<<<< HEAD
         return [$this->createFrom($matches), $this->createFrom($noMatches)];
+=======
+        return array(new static($matches), new static($noMatches));
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -367,7 +417,11 @@ class ArrayCollection implements Collection, Selectable
      */
     public function clear()
     {
+<<<<<<< HEAD
         $this->elements = [];
+=======
+        $this->elements = array();
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -393,9 +447,14 @@ class ArrayCollection implements Collection, Selectable
         }
 
         if ($orderings = $criteria->getOrderings()) {
+<<<<<<< HEAD
             $next = null;
             foreach (array_reverse($orderings) as $field => $ordering) {
                 $next = ClosureExpressionVisitor::sortByField($field, $ordering == Criteria::DESC ? -1 : 1, $next);
+=======
+            foreach (array_reverse($orderings) as $field => $ordering) {
+                $next = ClosureExpressionVisitor::sortByField($field, $ordering == Criteria::DESC ? -1 : 1);
+>>>>>>> pantheon-drops-8/master
             }
 
             uasort($filtered, $next);
@@ -408,6 +467,10 @@ class ArrayCollection implements Collection, Selectable
             $filtered = array_slice($filtered, (int)$offset, $length);
         }
 
+<<<<<<< HEAD
         return $this->createFrom($filtered);
+=======
+        return new static($filtered);
+>>>>>>> pantheon-drops-8/master
     }
 }

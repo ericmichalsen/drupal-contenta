@@ -118,6 +118,7 @@ class UrlMatcher implements UrlMatcherInterface, RequestMatcherInterface
      */
     protected function matchCollection($pathinfo, RouteCollection $routes)
     {
+<<<<<<< HEAD
         // HEAD and GET are equivalent as per RFC
         if ('HEAD' === $method = $this->context->getMethod()) {
             $method = 'GET';
@@ -156,6 +157,17 @@ class UrlMatcher implements UrlMatcherInterface, RequestMatcherInterface
                 if ((!$requiredMethods || \in_array('GET', $requiredMethods)) && 'GET' === $method) {
                     return $this->allow = array();
                 }
+=======
+        foreach ($routes as $name => $route) {
+            $compiledRoute = $route->compile();
+
+            // check the static prefix of the URL first. Only use the more expensive preg_match when it matches
+            if ('' !== $compiledRoute->getStaticPrefix() && 0 !== strpos($pathinfo, $compiledRoute->getStaticPrefix())) {
+                continue;
+            }
+
+            if (!preg_match($compiledRoute->getRegex(), $pathinfo, $matches)) {
+>>>>>>> pantheon-drops-8/master
                 continue;
             }
 
@@ -171,7 +183,16 @@ class UrlMatcher implements UrlMatcherInterface, RequestMatcherInterface
             }
 
             // check HTTP method requirement
+<<<<<<< HEAD
             if ($requiredMethods) {
+=======
+            if ($requiredMethods = $route->getMethods()) {
+                // HEAD and GET are equivalent as per RFC
+                if ('HEAD' === $method = $this->context->getMethod()) {
+                    $method = 'GET';
+                }
+
+>>>>>>> pantheon-drops-8/master
                 if (!\in_array($method, $requiredMethods)) {
                     if (self::REQUIREMENT_MATCH === $status[0]) {
                         $this->allow = array_merge($this->allow, $requiredMethods);
@@ -183,8 +204,11 @@ class UrlMatcher implements UrlMatcherInterface, RequestMatcherInterface
 
             return $this->getAttributes($route, $name, array_replace($matches, $hostMatches, isset($status[1]) ? $status[1] : array()));
         }
+<<<<<<< HEAD
 
         return array();
+=======
+>>>>>>> pantheon-drops-8/master
     }
 
     /**

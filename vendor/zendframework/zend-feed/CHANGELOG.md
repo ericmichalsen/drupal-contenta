@@ -2,6 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+<<<<<<< HEAD
 ## 2.10.3 - 2018-08-01
 
 ### Added
@@ -301,6 +302,8 @@ All notable changes to this project will be documented in this file, in reverse 
 - [#40](https://github.com/zendframework/zend-feed/pull/40) fixed service
   manager v3 compatibility aliases in extension plugin managers
 
+=======
+>>>>>>> pantheon-drops-8/master
 ## 2.7.0 - 2016-02-11
 
 ### Added

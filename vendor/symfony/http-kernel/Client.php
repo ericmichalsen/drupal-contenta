@@ -81,9 +81,14 @@ class Client extends BaseClient
      */
     protected function getScript($request)
     {
+<<<<<<< HEAD
         $kernel = var_export(serialize($this->kernel), true);
         $request = var_export(serialize($request), true);
 
+=======
+        $kernel = str_replace("'", "\\'", serialize($this->kernel));
+        $request = str_replace("'", "\\'", serialize($request));
+>>>>>>> pantheon-drops-8/master
         $errorReporting = error_reporting();
 
         $requires = '';
@@ -92,7 +97,11 @@ class Client extends BaseClient
                 $r = new \ReflectionClass($class);
                 $file = \dirname(\dirname($r->getFileName())).'/autoload.php';
                 if (file_exists($file)) {
+<<<<<<< HEAD
                     $requires .= 'require_once '.var_export($file, true).";\n";
+=======
+                    $requires .= "require_once '".str_replace("'", "\\'", $file)."';\n";
+>>>>>>> pantheon-drops-8/master
                 }
             }
         }
@@ -108,8 +117,13 @@ error_reporting($errorReporting);
 
 $requires
 
+<<<<<<< HEAD
 \$kernel = unserialize($kernel);
 \$request = unserialize($request);
+=======
+\$kernel = unserialize('$kernel');
+\$request = unserialize('$request');
+>>>>>>> pantheon-drops-8/master
 EOF;
 
         return $code.$this->getHandleScript();

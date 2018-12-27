@@ -4,4 +4,8 @@
 
 require_once __DIR__ . '/composer/autoload_real.php';
 
+<<<<<<< HEAD
 return ComposerAutoloaderInit9556f62102ad74fceaa87366d8ef86cc::getLoader();
+=======
+return ComposerAutoloaderInitDrupal8::getLoader();
+>>>>>>> pantheon-drops-8/master

@@ -15,7 +15,10 @@ use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Exception\ExceptionInterface;
 use Symfony\Component\DependencyInjection\Exception\RuntimeException;
+<<<<<<< HEAD
 use Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+=======
+>>>>>>> pantheon-drops-8/master
 
 /**
  * This replaces all ChildDefinition instances with their equivalent fully
@@ -26,8 +29,11 @@ use Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceExce
  */
 class ResolveChildDefinitionsPass extends AbstractRecursivePass
 {
+<<<<<<< HEAD
     private $currentPath;
 
+=======
+>>>>>>> pantheon-drops-8/master
     protected function processValue($value, $isRoot = false)
     {
         if (!$value instanceof Definition) {
@@ -39,7 +45,10 @@ class ResolveChildDefinitionsPass extends AbstractRecursivePass
             $value = $this->container->getDefinition($this->currentId);
         }
         if ($value instanceof ChildDefinition) {
+<<<<<<< HEAD
             $this->currentPath = array();
+=======
+>>>>>>> pantheon-drops-8/master
             $value = $this->resolveDefinition($value);
             if ($isRoot) {
                 $this->container->setDefinition($this->currentId, $value);
@@ -60,8 +69,11 @@ class ResolveChildDefinitionsPass extends AbstractRecursivePass
     {
         try {
             return $this->doResolveDefinition($definition);
+<<<<<<< HEAD
         } catch (ServiceCircularReferenceException $e) {
             throw $e;
+=======
+>>>>>>> pantheon-drops-8/master
         } catch (ExceptionInterface $e) {
             $r = new \ReflectionProperty($e, 'message');
             $r->setAccessible(true);
@@ -77,6 +89,7 @@ class ResolveChildDefinitionsPass extends AbstractRecursivePass
             throw new RuntimeException(sprintf('Parent definition "%s" does not exist.', $parent));
         }
 
+<<<<<<< HEAD
         $searchKey = array_search($parent, $this->currentPath);
         $this->currentPath[] = $parent;
 
@@ -84,6 +97,8 @@ class ResolveChildDefinitionsPass extends AbstractRecursivePass
             throw new ServiceCircularReferenceException($parent, \array_slice($this->currentPath, $searchKey));
         }
 
+=======
+>>>>>>> pantheon-drops-8/master
         $parentDef = $this->container->findDefinition($parent);
         if ($parentDef instanceof ChildDefinition) {
             $id = $this->currentId;

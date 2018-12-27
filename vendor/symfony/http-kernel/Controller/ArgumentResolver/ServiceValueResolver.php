@@ -47,10 +47,13 @@ final class ServiceValueResolver implements ArgumentValueResolverInterface
             $controller = ltrim($controller, '\\');
         }
 
+<<<<<<< HEAD
         if (!$this->container->has($controller) && false !== $i = strrpos($controller, ':')) {
             $controller = substr($controller, 0, $i).strtolower(substr($controller, $i));
         }
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->container->has($controller) && $this->container->get($controller)->has($argument->getName());
     }
 
@@ -67,11 +70,14 @@ final class ServiceValueResolver implements ArgumentValueResolverInterface
             $controller = ltrim($controller, '\\');
         }
 
+<<<<<<< HEAD
         if (!$this->container->has($controller)) {
             $i = strrpos($controller, ':');
             $controller = substr($controller, 0, $i).strtolower(substr($controller, $i));
         }
 
+=======
+>>>>>>> pantheon-drops-8/master
         yield $this->container->get($controller)->get($argument->getName());
     }
 }

@@ -35,13 +35,22 @@ class SetCookie
         $data = self::$defaults;
         // Explode the cookie string using a series of semicolons
         $pieces = array_filter(array_map('trim', explode(';', $cookie)));
+<<<<<<< HEAD
         // The name of the cookie (first kvp) must exist and include an equal sign.
         if (empty($pieces[0]) || !strpos($pieces[0], '=')) {
+=======
+        // The name of the cookie (first kvp) must include an equal sign.
+        if (empty($pieces) || !strpos($pieces[0], '=')) {
+>>>>>>> pantheon-drops-8/master
             return new self($data);
         }
 
         // Add the cookie pieces into the parsed data array
         foreach ($pieces as $part) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> pantheon-drops-8/master
             $cookieParts = explode('=', $part, 2);
             $key = trim($cookieParts[0]);
             $value = isset($cookieParts[1])
@@ -348,7 +357,11 @@ class SetCookie
             return false;
         }
 
+<<<<<<< HEAD
         return (bool) preg_match('/\.' . preg_quote($cookieDomain, '/') . '$/', $domain);
+=======
+        return (bool) preg_match('/\.' . preg_quote($cookieDomain) . '$/', $domain);
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -358,7 +371,11 @@ class SetCookie
      */
     public function isExpired()
     {
+<<<<<<< HEAD
         return $this->getExpires() !== null && time() > $this->getExpires();
+=======
+        return $this->getExpires() && time() > $this->getExpires();
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -377,8 +394,13 @@ class SetCookie
         // Check if any of the invalid characters are present in the cookie name
         if (preg_match(
             '/[\x00-\x20\x22\x28-\x29\x2c\x2f\x3a-\x40\x5c\x7b\x7d\x7f]/',
+<<<<<<< HEAD
             $name
         )) {
+=======
+            $name)
+        ) {
+>>>>>>> pantheon-drops-8/master
             return 'Cookie name must not contain invalid characters: ASCII '
                 . 'Control characters (0-31;127), space, tab and the '
                 . 'following characters: ()<>@,;:\"/?={}';

@@ -14,7 +14,10 @@ php:
     - 7.0
     - 7.1
     - 7.2
+<<<<<<< HEAD
     - 7.3
+=======
+>>>>>>> pantheon-drops-8/master
     - nightly
 
 env:
@@ -31,7 +34,16 @@ before_script:
     - if [ "$TWIG_EXT" == "yes" ]; then sh -c "cd ext/twig && phpize && ./configure --enable-twig && make && make install"; fi
     - if [ "$TWIG_EXT" == "yes" ]; then echo "extension=twig.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"`; fi
 
+<<<<<<< HEAD
 script: ./vendor/bin/simple-phpunit
+=======
+script: |
+    if [[ $TRAVIS_PHP_VERSION = 7.* || $TRAVIS_PHP_VERSION = nightly ]]; then
+        SYMFONY_PHPUNIT_VERSION=6.1 ./vendor/bin/simple-phpunit
+    else
+        ./vendor/bin/simple-phpunit
+    fi
+>>>>>>> pantheon-drops-8/master
 
 matrix:
     fast_finish: true

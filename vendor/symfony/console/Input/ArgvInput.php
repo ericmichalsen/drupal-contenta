@@ -121,8 +121,12 @@ class ArgvInput extends Input
         $len = \strlen($name);
         for ($i = 0; $i < $len; ++$i) {
             if (!$this->definition->hasShortcut($name[$i])) {
+<<<<<<< HEAD
                 $encoding = mb_detect_encoding($name, null, true);
                 throw new RuntimeException(sprintf('The "-%s" option does not exist.', false === $encoding ? $name[$i] : mb_substr($name, $i, 1, $encoding)));
+=======
+                throw new RuntimeException(sprintf('The "-%s" option does not exist.', $name[$i]));
+>>>>>>> pantheon-drops-8/master
             }
 
             $option = $this->definition->getOptionForShortcut($name[$i]);

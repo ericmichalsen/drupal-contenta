@@ -61,8 +61,11 @@ interface InputInterface
 
     /**
      * Binds the current Input instance with the given arguments and options.
+<<<<<<< HEAD
      *
      * @throws RuntimeException
+=======
+>>>>>>> pantheon-drops-8/master
      */
     public function bind(InputDefinition $definition);
 
@@ -85,7 +88,11 @@ interface InputInterface
      *
      * @param string $name The argument name
      *
+<<<<<<< HEAD
      * @return string|string[]|null The argument value
+=======
+     * @return mixed The argument value
+>>>>>>> pantheon-drops-8/master
      *
      * @throws InvalidArgumentException When argument given doesn't exist
      */
@@ -94,8 +101,13 @@ interface InputInterface
     /**
      * Sets an argument value by name.
      *
+<<<<<<< HEAD
      * @param string               $name  The argument name
      * @param string|string[]|null $value The argument value
+=======
+     * @param string $name  The argument name
+     * @param string $value The argument value
+>>>>>>> pantheon-drops-8/master
      *
      * @throws InvalidArgumentException When argument given doesn't exist
      */
@@ -122,7 +134,11 @@ interface InputInterface
      *
      * @param string $name The option name
      *
+<<<<<<< HEAD
      * @return string|string[]|bool|null The option value
+=======
+     * @return mixed The option value
+>>>>>>> pantheon-drops-8/master
      *
      * @throws InvalidArgumentException When option given doesn't exist
      */
@@ -131,8 +147,13 @@ interface InputInterface
     /**
      * Sets an option value by name.
      *
+<<<<<<< HEAD
      * @param string                    $name  The option name
      * @param string|string[]|bool|null $value The option value
+=======
+     * @param string      $name  The option name
+     * @param string|bool $value The option value
+>>>>>>> pantheon-drops-8/master
      *
      * @throws InvalidArgumentException When option given doesn't exist
      */

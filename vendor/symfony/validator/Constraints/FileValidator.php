@@ -57,7 +57,11 @@ class FileValidator extends ConstraintValidator
                         $binaryFormat = $constraint->binaryFormat;
                     } else {
                         $limitInBytes = $iniLimitSize;
+<<<<<<< HEAD
                         $binaryFormat = null === $constraint->binaryFormat ? true : $constraint->binaryFormat;
+=======
+                        $binaryFormat = true;
+>>>>>>> pantheon-drops-8/master
                     }
 
                     list($sizeAsString, $limitAsString, $suffix) = $this->factorizeSizes(0, $limitInBytes, $binaryFormat);

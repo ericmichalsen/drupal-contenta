@@ -65,9 +65,13 @@ class CurlMultiHandler
 
         $promise = new Promise(
             [$this, 'execute'],
+<<<<<<< HEAD
             function () use ($id) {
                 return $this->cancel($id);
             }
+=======
+            function () use ($id) { return $this->cancel($id); }
+>>>>>>> pantheon-drops-8/master
         );
 
         $this->addRequest(['easy' => $easy, 'deferred' => $promise]);

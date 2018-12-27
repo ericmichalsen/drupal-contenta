@@ -22,7 +22,11 @@ class CamelCaseToSnakeCaseNameConverter implements NameConverterInterface
     private $lowerCamelCase;
 
     /**
+<<<<<<< HEAD
      * @param array|null $attributes     The list of attributes to rename or null for all attributes
+=======
+     * @param null|array $attributes     The list of attributes to rename or null for all attributes
+>>>>>>> pantheon-drops-8/master
      * @param bool       $lowerCamelCase Use lowerCamelCase style
      */
     public function __construct(array $attributes = null, $lowerCamelCase = true)

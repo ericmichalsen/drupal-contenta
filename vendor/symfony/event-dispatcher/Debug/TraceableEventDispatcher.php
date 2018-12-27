@@ -132,6 +132,7 @@ class TraceableEventDispatcher implements TraceableEventDispatcherInterface
         }
 
         $this->preProcess($eventName);
+<<<<<<< HEAD
         try {
             $this->preDispatch($eventName, $event);
             try {
@@ -150,6 +151,21 @@ class TraceableEventDispatcher implements TraceableEventDispatcherInterface
             $this->postProcess($eventName);
         }
 
+=======
+        $this->preDispatch($eventName, $event);
+
+        $e = $this->stopwatch->start($eventName, 'section');
+
+        $this->dispatcher->dispatch($eventName, $event);
+
+        if ($e->isStarted()) {
+            $e->stop();
+        }
+
+        $this->postDispatch($eventName, $event);
+        $this->postProcess($eventName);
+
+>>>>>>> pantheon-drops-8/master
         return $event;
     }
 
@@ -254,7 +270,11 @@ class TraceableEventDispatcher implements TraceableEventDispatcherInterface
     {
         foreach ($this->dispatcher->getListeners($eventName) as $listener) {
             $priority = $this->getListenerPriority($eventName, $listener);
+<<<<<<< HEAD
             $wrappedListener = new WrappedListener($listener instanceof WrappedListener ? $listener->getWrappedListener() : $listener, null, $this->stopwatch, $this);
+=======
+            $wrappedListener = new WrappedListener($listener, null, $this->stopwatch, $this);
+>>>>>>> pantheon-drops-8/master
             $this->wrappedListeners[$eventName][] = $wrappedListener;
             $this->dispatcher->removeListener($eventName, $listener);
             $this->dispatcher->addListener($eventName, $wrappedListener, $priority);

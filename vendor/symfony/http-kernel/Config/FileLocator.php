@@ -26,7 +26,11 @@ class FileLocator extends BaseFileLocator
 
     /**
      * @param KernelInterface $kernel A KernelInterface instance
+<<<<<<< HEAD
      * @param string|null     $path   The path the global resource directory
+=======
+     * @param null|string     $path   The path the global resource directory
+>>>>>>> pantheon-drops-8/master
      * @param array           $paths  An array of paths where to look for resources
      */
     public function __construct(KernelInterface $kernel, $path = null, array $paths = array())

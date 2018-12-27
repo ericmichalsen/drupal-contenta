@@ -18,8 +18,11 @@ namespace Symfony\Component\DependencyInjection;
  */
 interface ContainerAwareInterface
 {
+<<<<<<< HEAD
     /**
      * Sets the container.
      */
+=======
+>>>>>>> pantheon-drops-8/master
     public function setContainer(ContainerInterface $container = null);
 }

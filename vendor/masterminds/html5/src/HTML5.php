@@ -2,7 +2,10 @@
 namespace Masterminds;
 
 use Masterminds\HTML5\Parser\FileInputStream;
+<<<<<<< HEAD
 use Masterminds\HTML5\Parser\InputStream;
+=======
+>>>>>>> pantheon-drops-8/master
 use Masterminds\HTML5\Parser\StringInputStream;
 use Masterminds\HTML5\Parser\DOMTreeBuilder;
 use Masterminds\HTML5\Parser\Scanner;
@@ -14,6 +17,11 @@ use Masterminds\HTML5\Serializer\Traverser;
  * This class offers convenience methods for parsing and serializing HTML5.
  * It is roughly designed to mirror the \DOMDocument class that is
  * provided with most versions of PHP.
+<<<<<<< HEAD
+=======
+ *
+ * EXPERIMENTAL. This may change or be completely replaced.
+>>>>>>> pantheon-drops-8/master
  */
 class HTML5
 {
@@ -55,7 +63,11 @@ class HTML5
      *
      * The rules governing parsing are set out in the HTML 5 spec.
      *
+<<<<<<< HEAD
      * @param string|resource $file
+=======
+     * @param string $file
+>>>>>>> pantheon-drops-8/master
      *            The path to the file to parse. If this is a resource, it is
      *            assumed to be an open stream whose pointer is set to the first
      *            byte of input.
@@ -68,10 +80,20 @@ class HTML5
     {
         // Handle the case where file is a resource.
         if (is_resource($file)) {
+<<<<<<< HEAD
             return $this->parse(stream_get_contents($file), $options);
         }
 
         return $this->parse(file_get_contents($file), $options);
+=======
+            // FIXME: We need a StreamInputStream class.
+            return $this->loadHTML(stream_get_contents($file), $options);
+        }
+
+        $input = new FileInputStream($file);
+
+        return $this->parse($input, $options);
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -89,7 +111,13 @@ class HTML5
      */
     public function loadHTML($string, array $options = array())
     {
+<<<<<<< HEAD
         return $this->parse($string, $options);
+=======
+        $input = new StringInputStream($string);
+
+        return $this->parse($input, $options);
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -116,15 +144,28 @@ class HTML5
     /**
      * Parse a HTML fragment from a string.
      *
+<<<<<<< HEAD
      * @param string $string The HTML5 fragment as a string.
      * @param array $options Configuration options when parsing the HTML
+=======
+     * @param string $string
+     *            The html5 fragment as a string.
+     * @param array $options
+     *            Configuration options when parsing the HTML
+>>>>>>> pantheon-drops-8/master
      *
      * @return \DOMDocumentFragment A DOM fragment. The DOM is part of libxml, which is included with
      *         almost all distributions of PHP.
      */
     public function loadHTMLFragment($string, array $options = array())
     {
+<<<<<<< HEAD
         return $this->parseFragment($string, $options);
+=======
+        $input = new StringInputStream($string);
+
+        return $this->parseFragment($input, $options);
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -152,6 +193,7 @@ class HTML5
      *
      * Lower-level loading function. This requires an input stream instead
      * of a string, file, or resource.
+<<<<<<< HEAD
      *
      * @param string $input
      * @param array $options
@@ -159,6 +201,10 @@ class HTML5
      * @return \DOMDocument
      */
     public function parse($input, array $options = array())
+=======
+     */
+    public function parse(\Masterminds\HTML5\Parser\InputStream $input, array $options = array())
+>>>>>>> pantheon-drops-8/master
     {
         $this->errors = array();
         $options = array_merge($this->getOptions(), $options);
@@ -177,6 +223,7 @@ class HTML5
      *
      * Lower-level loading function. This requires an input stream instead
      * of a string, file, or resource.
+<<<<<<< HEAD
      *
      * @param string $input The input data to parse in the form of a string.
      * @param array $options An array of options
@@ -184,6 +231,10 @@ class HTML5
      * @return \DOMDocumentFragment
      */
     public function parseFragment($input, array $options = array())
+=======
+     */
+    public function parseFragment(\Masterminds\HTML5\Parser\InputStream $input, array $options = array())
+>>>>>>> pantheon-drops-8/master
     {
         $options = array_merge($this->getOptions(), $options);
         $events = new DOMTreeBuilder(true, $options);

@@ -402,7 +402,11 @@ class XmlFileLoader extends FileLoader
     {
         $definitions = array();
         $count = 0;
+<<<<<<< HEAD
         $suffix = '~'.ContainerBuilder::hash($file);
+=======
+        $suffix = ContainerBuilder::hash($file);
+>>>>>>> pantheon-drops-8/master
 
         $xpath = new \DOMXPath($xml);
         $xpath->registerNamespace('container', self::NS);
@@ -412,7 +416,11 @@ class XmlFileLoader extends FileLoader
             foreach ($nodes as $node) {
                 if ($services = $this->getChildren($node, 'service')) {
                     // give it a unique name
+<<<<<<< HEAD
                     $id = sprintf('%d_%s', ++$count, preg_replace('/^.*\\\\/', '', $services[0]->getAttribute('class')).$suffix);
+=======
+                    $id = sprintf('%d_%s', ++$count, preg_replace('/^.*\\\\/', '', $services[0]->getAttribute('class')).'~'.$suffix);
+>>>>>>> pantheon-drops-8/master
                     $node->setAttribute('id', $id);
                     $node->setAttribute('service', $id);
 
@@ -680,7 +688,17 @@ EOF
             // can it be handled by an extension?
             if (!$this->container->hasExtension($node->namespaceURI)) {
                 $extensionNamespaces = array_filter(array_map(function ($ext) { return $ext->getNamespace(); }, $this->container->getExtensions()));
+<<<<<<< HEAD
                 throw new InvalidArgumentException(sprintf('There is no extension able to load the configuration for "%s" (in %s). Looked for namespace "%s", found %s', $node->tagName, $file, $node->namespaceURI, $extensionNamespaces ? sprintf('"%s"', implode('", "', $extensionNamespaces)) : 'none'));
+=======
+                throw new InvalidArgumentException(sprintf(
+                    'There is no extension able to load the configuration for "%s" (in %s). Looked for namespace "%s", found %s',
+                    $node->tagName,
+                    $file,
+                    $node->namespaceURI,
+                    $extensionNamespaces ? sprintf('"%s"', implode('", "', $extensionNamespaces)) : 'none'
+                ));
+>>>>>>> pantheon-drops-8/master
             }
         }
     }

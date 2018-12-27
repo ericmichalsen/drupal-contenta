@@ -20,8 +20,13 @@ use Symfony\Component\Console\Exception\LogicException;
  * Usage:
  *
  *     $definition = new InputDefinition(array(
+<<<<<<< HEAD
  *         new InputArgument('name', InputArgument::REQUIRED),
  *         new InputOption('foo', 'f', InputOption::VALUE_REQUIRED),
+=======
+ *       new InputArgument('name', InputArgument::REQUIRED),
+ *       new InputOption('foo', 'f', InputOption::VALUE_REQUIRED),
+>>>>>>> pantheon-drops-8/master
  *     ));
  *
  * @author Fabien Potencier <fabien@symfony.com>
@@ -387,7 +392,11 @@ class InputDefinition
             if (!$argument->isRequired()) {
                 $element = '['.$element.']';
             } elseif ($argument->isArray()) {
+<<<<<<< HEAD
                 $element .= ' ('.$element.')';
+=======
+                $element = $element.' ('.$element.')';
+>>>>>>> pantheon-drops-8/master
             }
 
             if ($argument->isArray()) {

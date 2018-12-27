@@ -12,9 +12,15 @@ namespace Zend\Feed\Reader;
 use DOMDocument;
 use DOMXPath;
 use Zend\Cache\Storage\StorageInterface as CacheStorage;
+<<<<<<< HEAD
 use Zend\Feed\Reader\Exception\InvalidHttpClientException;
 use Zend\Http as ZendHttp;
 use Zend\Stdlib\ErrorHandler;
+=======
+use Zend\Http as ZendHttp;
+use Zend\Stdlib\ErrorHandler;
+use Zend\Feed\Reader\Exception\InvalidHttpClientException;
+>>>>>>> pantheon-drops-8/master
 
 /**
 */
@@ -222,9 +228,13 @@ class Reader implements ReaderImportInterface
             }
             $response = $client->get($uri, $headers);
             if ($response->getStatusCode() !== 200 && $response->getStatusCode() !== 304) {
+<<<<<<< HEAD
                 throw new Exception\RuntimeException(
                     'Feed failed to load, got response code ' . $response->getStatusCode()
                 );
+=======
+                throw new Exception\RuntimeException('Feed failed to load, got response code ' . $response->getStatusCode());
+>>>>>>> pantheon-drops-8/master
             }
             if ($response->getStatusCode() == 304) {
                 $responseXml = $data;
@@ -249,9 +259,13 @@ class Reader implements ReaderImportInterface
             }
             $response = $client->get($uri);
             if ((int) $response->getStatusCode() !== 200) {
+<<<<<<< HEAD
                 throw new Exception\RuntimeException(
                     'Feed failed to load, got response code ' . $response->getStatusCode()
                 );
+=======
+                throw new Exception\RuntimeException('Feed failed to load, got response code ' . $response->getStatusCode());
+>>>>>>> pantheon-drops-8/master
             }
             $responseXml = $response->getBody();
             $cache->setItem($cacheId, $responseXml);
@@ -259,9 +273,13 @@ class Reader implements ReaderImportInterface
         } else {
             $response = $client->get($uri);
             if ((int) $response->getStatusCode() !== 200) {
+<<<<<<< HEAD
                 throw new Exception\RuntimeException(
                     'Feed failed to load, got response code ' . $response->getStatusCode()
                 );
+=======
+                throw new Exception\RuntimeException('Feed failed to load, got response code ' . $response->getStatusCode());
+>>>>>>> pantheon-drops-8/master
             }
             $reader = static::importString($response->getBody());
             $reader->setOriginalSourceUri($uri);
@@ -295,9 +313,13 @@ class Reader implements ReaderImportInterface
         }
 
         if ((int) $response->getStatusCode() !== 200) {
+<<<<<<< HEAD
             throw new Exception\RuntimeException(
                 'Feed failed to load, got response code ' . $response->getStatusCode()
             );
+=======
+            throw new Exception\RuntimeException('Feed failed to load, got response code ' . $response->getStatusCode());
+>>>>>>> pantheon-drops-8/master
         }
         $reader = static::importString($response->getBody());
         $reader->setOriginalSourceUri($uri);
@@ -315,7 +337,11 @@ class Reader implements ReaderImportInterface
     public static function importString($string)
     {
         $trimmed = trim($string);
+<<<<<<< HEAD
         if (! is_string($string) || empty($trimmed)) {
+=======
+        if (!is_string($string) || empty($trimmed)) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Only non empty strings are allowed as input');
         }
 
@@ -333,7 +359,11 @@ class Reader implements ReaderImportInterface
         libxml_disable_entity_loader($oldValue);
         libxml_use_internal_errors($libxmlErrflag);
 
+<<<<<<< HEAD
         if (! $status) {
+=======
+        if (!$status) {
+>>>>>>> pantheon-drops-8/master
             // Build error message
             $error = libxml_get_last_error();
             if ($error && $error->message) {
@@ -392,9 +422,13 @@ class Reader implements ReaderImportInterface
         $client   = static::getHttpClient();
         $response = $client->get($uri);
         if ($response->getStatusCode() !== 200) {
+<<<<<<< HEAD
             throw new Exception\RuntimeException(
                 "Failed to access $uri, got response code " . $response->getStatusCode()
             );
+=======
+            throw new Exception\RuntimeException("Failed to access $uri, got response code " . $response->getStatusCode());
+>>>>>>> pantheon-drops-8/master
         }
         $responseHtml = $response->getBody();
         $libxmlErrflag = libxml_use_internal_errors(true);
@@ -403,7 +437,11 @@ class Reader implements ReaderImportInterface
         $status = $dom->loadHTML(trim($responseHtml));
         libxml_disable_entity_loader($oldValue);
         libxml_use_internal_errors($libxmlErrflag);
+<<<<<<< HEAD
         if (! $status) {
+=======
+        if (!$status) {
+>>>>>>> pantheon-drops-8/master
             // Build error message
             $error = libxml_get_last_error();
             if ($error && $error->message) {
@@ -435,8 +473,13 @@ class Reader implements ReaderImportInterface
             $dom = $feed->getDomDocument();
         } elseif ($feed instanceof DOMDocument) {
             $dom = $feed;
+<<<<<<< HEAD
         } elseif (is_string($feed) && ! empty($feed)) {
             ErrorHandler::start(E_NOTICE | E_WARNING);
+=======
+        } elseif (is_string($feed) && !empty($feed)) {
+            ErrorHandler::start(E_NOTICE|E_WARNING);
+>>>>>>> pantheon-drops-8/master
             ini_set('track_errors', 1);
             $oldValue = libxml_disable_entity_loader(true);
             $dom = new DOMDocument;
@@ -451,8 +494,13 @@ class Reader implements ReaderImportInterface
             libxml_disable_entity_loader($oldValue);
             ini_restore('track_errors');
             ErrorHandler::stop();
+<<<<<<< HEAD
             if (! $status) {
                 if (! isset($phpErrormsg)) {
+=======
+            if (!$status) {
+                if (!isset($phpErrormsg)) {
+>>>>>>> pantheon-drops-8/master
                     if (function_exists('xdebug_is_enabled')) {
                         $phpErrormsg = '(error message not available, when XDebug is running)';
                     } else {
@@ -562,7 +610,11 @@ class Reader implements ReaderImportInterface
      */
     public static function getExtensionManager()
     {
+<<<<<<< HEAD
         if (! isset(static::$extensionManager)) {
+=======
+        if (!isset(static::$extensionManager)) {
+>>>>>>> pantheon-drops-8/master
             static::setExtensionManager(new StandaloneExtensionManager());
         }
         return static::$extensionManager;
@@ -577,6 +629,7 @@ class Reader implements ReaderImportInterface
      */
     public static function registerExtension($name)
     {
+<<<<<<< HEAD
         if (! static::hasExtension($name)) {
             throw new Exception\RuntimeException(sprintf(
                 'Could not load extension "%s" using Plugin Loader.'
@@ -598,6 +651,24 @@ class Reader implements ReaderImportInterface
         }
 
         $entryName = $name . '\Entry';
+=======
+        $feedName  = $name . '\Feed';
+        $entryName = $name . '\Entry';
+        $manager   = static::getExtensionManager();
+        if (static::isRegistered($name)) {
+            if ($manager->has($feedName) || $manager->has($entryName)) {
+                return;
+            }
+        }
+
+        if (!$manager->has($feedName) && !$manager->has($entryName)) {
+            throw new Exception\RuntimeException('Could not load extension: ' . $name
+                . ' using Plugin Loader. Check prefix paths are configured and extension exists.');
+        }
+        if ($manager->has($feedName)) {
+            static::$extensions['feed'][] = $feedName;
+        }
+>>>>>>> pantheon-drops-8/master
         if ($manager->has($entryName)) {
             static::$extensions['entry'][] = $entryName;
         }
@@ -677,6 +748,7 @@ class Reader implements ReaderImportInterface
         static::registerExtension('WellFormedWeb');
         static::registerExtension('Thread');
         static::registerExtension('Podcast');
+<<<<<<< HEAD
 
         // Added in 2.10.0; check for it conditionally
         static::hasExtension('GooglePlayPodcast')
@@ -689,6 +761,8 @@ class Reader implements ReaderImportInterface
                 ),
                 \E_USER_NOTICE
             );
+=======
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -709,6 +783,7 @@ class Reader implements ReaderImportInterface
         }
         return $array;
     }
+<<<<<<< HEAD
 
     /**
      * Does the extension manager have the named extension?
@@ -733,4 +808,6 @@ class Reader implements ReaderImportInterface
 
         return $manager->has($feedName) || $manager->has($entryName);
     }
+=======
+>>>>>>> pantheon-drops-8/master
 }

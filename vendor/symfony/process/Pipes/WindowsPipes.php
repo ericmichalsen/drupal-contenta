@@ -28,7 +28,10 @@ class WindowsPipes extends AbstractPipes
 {
     private $files = array();
     private $fileHandles = array();
+<<<<<<< HEAD
     private $lockHandles = array();
+=======
+>>>>>>> pantheon-drops-8/master
     private $readBytes = array(
         Process::STDOUT => 0,
         Process::STDERR => 0,
@@ -48,12 +51,17 @@ class WindowsPipes extends AbstractPipes
                 Process::STDOUT => Process::OUT,
                 Process::STDERR => Process::ERR,
             );
+<<<<<<< HEAD
+=======
+            $tmpCheck = false;
+>>>>>>> pantheon-drops-8/master
             $tmpDir = sys_get_temp_dir();
             $lastError = 'unknown reason';
             set_error_handler(function ($type, $msg) use (&$lastError) { $lastError = $msg; });
             for ($i = 0;; ++$i) {
                 foreach ($pipes as $pipe => $name) {
                     $file = sprintf('%s\\sf_proc_%02X.%s', $tmpDir, $i, $name);
+<<<<<<< HEAD
 
                     if (!$h = fopen($file.'.lock', 'w')) {
                         restore_error_handler();
@@ -75,6 +83,26 @@ class WindowsPipes extends AbstractPipes
                         continue 2;
                     }
                     $this->fileHandles[$pipe] = $h;
+=======
+                    if (file_exists($file) && !unlink($file)) {
+                        continue 2;
+                    }
+                    $h = fopen($file, 'xb');
+                    if (!$h) {
+                        $error = $lastError;
+                        if ($tmpCheck || $tmpCheck = unlink(tempnam(false, 'sf_check_'))) {
+                            continue;
+                        }
+                        restore_error_handler();
+                        throw new RuntimeException(sprintf('A temporary file could not be opened to write the process output: %s', $error));
+                    }
+                    if (!$h || !$this->fileHandles[$pipe] = fopen($file, 'rb')) {
+                        continue 2;
+                    }
+                    if (isset($this->files[$pipe])) {
+                        unlink($this->files[$pipe]);
+                    }
+>>>>>>> pantheon-drops-8/master
                     $this->files[$pipe] = $file;
                 }
                 break;
@@ -88,6 +116,10 @@ class WindowsPipes extends AbstractPipes
     public function __destruct()
     {
         $this->close();
+<<<<<<< HEAD
+=======
+        $this->removeFiles();
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -147,11 +179,16 @@ class WindowsPipes extends AbstractPipes
                 $read[$type] = $data;
             }
             if ($close) {
+<<<<<<< HEAD
                 ftruncate($fileHandle, 0);
                 fclose($fileHandle);
                 flock($this->lockHandles[$type], LOCK_UN);
                 fclose($this->lockHandles[$type]);
                 unset($this->fileHandles[$type], $this->lockHandles[$type]);
+=======
+                fclose($fileHandle);
+                unset($this->fileHandles[$type]);
+>>>>>>> pantheon-drops-8/master
             }
         }
 
@@ -180,6 +217,7 @@ class WindowsPipes extends AbstractPipes
     public function close()
     {
         parent::close();
+<<<<<<< HEAD
         foreach ($this->fileHandles as $type => $handle) {
             ftruncate($handle, 0);
             fclose($handle);
@@ -187,5 +225,24 @@ class WindowsPipes extends AbstractPipes
             fclose($this->lockHandles[$type]);
         }
         $this->fileHandles = $this->lockHandles = array();
+=======
+        foreach ($this->fileHandles as $handle) {
+            fclose($handle);
+        }
+        $this->fileHandles = array();
+    }
+
+    /**
+     * Removes temporary files.
+     */
+    private function removeFiles()
+    {
+        foreach ($this->files as $filename) {
+            if (file_exists($filename)) {
+                @unlink($filename);
+            }
+        }
+        $this->files = array();
+>>>>>>> pantheon-drops-8/master
     }
 }

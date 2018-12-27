@@ -174,8 +174,13 @@ final class Iconv
             }
         } while ($loop);
 
+<<<<<<< HEAD
         if (isset(self::$alias[$inCharset])) {
             $inCharset = self::$alias[$inCharset];
+=======
+        if (isset(self::$alias[ $inCharset])) {
+            $inCharset = self::$alias[ $inCharset];
+>>>>>>> pantheon-drops-8/master
         }
         if (isset(self::$alias[$outCharset])) {
             $outCharset = self::$alias[$outCharset];
@@ -292,7 +297,11 @@ final class Iconv
             if ((ICONV_MIME_DECODE_CONTINUE_ON_ERROR & $mode)
               && 'utf-8' !== $c
               && !isset(self::$alias[$c])
+<<<<<<< HEAD
               && !self::loadMap('from.', $c, $d)) {
+=======
+              && !self::loadMap('from.', $c,  $d)) {
+>>>>>>> pantheon-drops-8/master
                 $d = false;
             } elseif ('B' === strtoupper($str[$i + 1])) {
                 $d = base64_decode($str[$i + 2]);
@@ -433,7 +442,11 @@ final class Iconv
     {
         static $hasXml = null;
         if (null === $hasXml) {
+<<<<<<< HEAD
             $hasXml = \extension_loaded('xml');
+=======
+            $hasXml = extension_loaded('xml');
+>>>>>>> pantheon-drops-8/master
         }
 
         if ($hasXml) {

@@ -29,7 +29,11 @@ class Route implements \Serializable
     private $condition = '';
 
     /**
+<<<<<<< HEAD
      * @var CompiledRoute|null
+=======
+     * @var null|CompiledRoute
+>>>>>>> pantheon-drops-8/master
      */
     private $compiled;
 

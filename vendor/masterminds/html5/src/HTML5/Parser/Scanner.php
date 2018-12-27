@@ -1,6 +1,7 @@
 <?php
 namespace Masterminds\HTML5\Parser;
 
+<<<<<<< HEAD
 use Masterminds\HTML5\Exception;
 
 /**
@@ -31,10 +32,31 @@ class Scanner
      * Parse errors.
      */
     public $errors = array();
+=======
+/**
+ * The scanner.
+ *
+ * This scans over an input stream.
+ */
+class Scanner
+{
+
+    const CHARS_HEX = 'abcdefABCDEF01234567890';
+
+    const CHARS_ALNUM = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890';
+
+    const CHARS_ALPHA = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+    protected $is;
+
+    // Flipping this to true will give minisculely more debugging info.
+    public $debug = false;
+>>>>>>> pantheon-drops-8/master
 
     /**
      * Create a new Scanner.
      *
+<<<<<<< HEAD
      * @param string $data Data to parse
      * @param string $encoding The encoding to use for the data.
      *
@@ -83,6 +105,14 @@ class Scanner
     {
         $portion = substr($this->data, $this->char, strlen($sequence));
         return $caseSensitive ? $portion === $sequence : strcasecmp($portion, $sequence) === 0;
+=======
+     * @param \Masterminds\HTML5\Parser\InputStream $input
+     *            An InputStream to be scanned.
+     */
+    public function __construct($input)
+    {
+        $this->is = $input;
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -92,7 +122,11 @@ class Scanner
      */
     public function position()
     {
+<<<<<<< HEAD
         return $this->char;
+=======
+        return $this->is->key();
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -102,11 +136,15 @@ class Scanner
      */
     public function peek()
     {
+<<<<<<< HEAD
         if (($this->char + 1) <= $this->EOF) {
             return $this->data[$this->char + 1];
         }
 
         return false;
+=======
+        return $this->is->peek();
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -118,10 +156,18 @@ class Scanner
      */
     public function next()
     {
+<<<<<<< HEAD
         $this->char++;
 
         if ($this->char < $this->EOF) {
             return $this->data[$this->char];
+=======
+        $this->is->next();
+        if ($this->is->valid()) {
+            if ($this->debug)
+                fprintf(STDOUT, "> %s\n", $this->is->current());
+            return $this->is->current();
+>>>>>>> pantheon-drops-8/master
         }
 
         return false;
@@ -136,8 +182,13 @@ class Scanner
      */
     public function current()
     {
+<<<<<<< HEAD
         if ($this->char < $this->EOF) {
             return $this->data[$this->char];
+=======
+        if ($this->is->valid()) {
+            return $this->is->current();
+>>>>>>> pantheon-drops-8/master
         }
 
         return false;
@@ -145,12 +196,21 @@ class Scanner
 
     /**
      * Silently consume N chars.
+<<<<<<< HEAD
      *
      * @param int $count
      */
     public function consume($count = 1)
     {
         $this->char += $count;
+=======
+     */
+    public function consume($count = 1)
+    {
+        for ($i = 0; $i < $count; ++ $i) {
+            $this->next();
+        }
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -162,9 +222,13 @@ class Scanner
      */
     public function unconsume($howMany = 1)
     {
+<<<<<<< HEAD
         if (($this->char - $howMany) >= 0) {
             $this->char = $this->char - $howMany;
         }
+=======
+        $this->is->unconsume($howMany);
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -177,7 +241,11 @@ class Scanner
      */
     public function getHex()
     {
+<<<<<<< HEAD
         return $this->doCharsWhile(static::CHARS_HEX);
+=======
+        return $this->is->charsWhile(static::CHARS_HEX);
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -190,7 +258,11 @@ class Scanner
      */
     public function getAsciiAlpha()
     {
+<<<<<<< HEAD
         return $this->doCharsWhile(static::CHARS_ALPHA);
+=======
+        return $this->is->charsWhile(static::CHARS_ALPHA);
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -203,7 +275,11 @@ class Scanner
      */
     public function getAsciiAlphaNum()
     {
+<<<<<<< HEAD
         return $this->doCharsWhile(static::CHARS_ALNUM);
+=======
+        return $this->is->charsWhile(static::CHARS_ALNUM);
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -216,7 +292,11 @@ class Scanner
      */
     public function getNumeric()
     {
+<<<<<<< HEAD
         return $this->doCharsWhile('0123456789');
+=======
+        return $this->is->charsWhile('0123456789');
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -226,7 +306,11 @@ class Scanner
      */
     public function whitespace()
     {
+<<<<<<< HEAD
         return $this->doCharsWhile("\n\t\f ");
+=======
+        return $this->is->charsWhile("\n\t\f ");
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -236,6 +320,7 @@ class Scanner
      */
     public function currentLine()
     {
+<<<<<<< HEAD
         if (empty($this->EOF) || $this->char == 0) {
             return 1;
         }
@@ -243,10 +328,14 @@ class Scanner
         // Add one to $this->char because we want the number for the next
         // byte to be processed.
         return substr_count($this->data, "\n", 0, min($this->char, $this->EOF)) + 1;
+=======
+        return $this->is->currentLine();
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
      * Read chars until something in the mask is encountered.
+<<<<<<< HEAD
      *
      * @param string $mask
      *
@@ -255,10 +344,17 @@ class Scanner
     public function charsUntil($mask)
     {
         return $this->doCharsUntil($mask);
+=======
+     */
+    public function charsUntil($mask)
+    {
+        return $this->is->charsUntil($mask);
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
      * Read chars as long as the mask matches.
+<<<<<<< HEAD
      *
      * @param string $mask
      *
@@ -267,6 +363,12 @@ class Scanner
     public function charsWhile($mask)
     {
         return $this->doCharsWhile($mask);
+=======
+     */
+    public function charsWhile($mask)
+    {
+        return $this->is->charsWhile($mask);
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -278,6 +380,7 @@ class Scanner
      */
     public function columnOffset()
     {
+<<<<<<< HEAD
         // Short circuit for the first char.
         if ($this->char == 0) {
             return 0;
@@ -301,6 +404,9 @@ class Scanner
         }
 
         return UTF8Utils::countChars($findLengthOf);
+=======
+        return $this->is->columnOffset();
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -312,6 +418,7 @@ class Scanner
      */
     public function remainingChars()
     {
+<<<<<<< HEAD
         if ($this->char < $this->EOF) {
             $data = substr($this->data, $this->char);
             $this->char = $this->EOF;
@@ -411,5 +518,8 @@ class Scanner
         $this->char += $len;
 
         return $string;
+=======
+        return $this->is->remainingChars();
+>>>>>>> pantheon-drops-8/master
     }
 }

@@ -95,11 +95,19 @@ class CookieJar implements CookieJarInterface
     public function getCookieByName($name)
     {
         // don't allow a null name
+<<<<<<< HEAD
         if ($name === null) {
             return null;
         }
         foreach ($this->cookies as $cookie) {
             if ($cookie->getName() !== null && strcasecmp($cookie->getName(), $name) === 0) {
+=======
+        if($name === null) {
+            return null;
+        }
+        foreach($this->cookies as $cookie) {
+            if($cookie->getName() !== null && strcasecmp($cookie->getName(), $name) === 0) {
+>>>>>>> pantheon-drops-8/master
                 return $cookie;
             }
         }

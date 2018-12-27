@@ -24,8 +24,11 @@
     "psr-0": {
       "Egulias\\": "src/"
     }
+<<<<<<< HEAD
   },
   "scripts": {
     "test": "phpunit"
+=======
+>>>>>>> pantheon-drops-8/master
   }
 }

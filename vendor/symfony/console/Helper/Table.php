@@ -263,6 +263,7 @@ class Table
      * Renders table to output.
      *
      * Example:
+<<<<<<< HEAD
      *
      *     +---------------+-----------------------+------------------+
      *     | ISBN          | Title                 | Author           |
@@ -271,6 +272,17 @@ class Table
      *     | 9971-5-0210-0 | A Tale of Two Cities  | Charles Dickens  |
      *     | 960-425-059-0 | The Lord of the Rings | J. R. R. Tolkien |
      *     +---------------+-----------------------+------------------+
+=======
+     * <code>
+     * +---------------+-----------------------+------------------+
+     * | ISBN          | Title                 | Author           |
+     * +---------------+-----------------------+------------------+
+     * | 99921-58-10-7 | Divine Comedy         | Dante Alighieri  |
+     * | 9971-5-0210-0 | A Tale of Two Cities  | Charles Dickens  |
+     * | 960-425-059-0 | The Lord of the Rings | J. R. R. Tolkien |
+     * +---------------+-----------------------+------------------+
+     * </code>
+>>>>>>> pantheon-drops-8/master
      */
     public function render()
     {
@@ -304,9 +316,13 @@ class Table
     /**
      * Renders horizontal header separator.
      *
+<<<<<<< HEAD
      * Example:
      *
      *     +-----+-----------+-------+
+=======
+     * Example: <code>+-----+-----------+-------+</code>
+>>>>>>> pantheon-drops-8/master
      */
     private function renderRowSeparator()
     {
@@ -337,9 +353,13 @@ class Table
     /**
      * Renders table row.
      *
+<<<<<<< HEAD
      * Example:
      *
      *     | 9971-5-0210-0 | A Tale of Two Cities  | Charles Dickens  |
+=======
+     * Example: <code>| 9971-5-0210-0 | A Tale of Two Cities  | Charles Dickens  |</code>
+>>>>>>> pantheon-drops-8/master
      *
      * @param array  $row
      * @param string $cellFormat
@@ -612,7 +632,11 @@ class Table
                 $lengths[] = $this->getCellWidth($row, $column);
             }
 
+<<<<<<< HEAD
             $this->effectiveColumnWidths[$column] = max($lengths) + Helper::strlen($this->style->getCellRowContentFormat()) - 2;
+=======
+            $this->effectiveColumnWidths[$column] = max($lengths) + \strlen($this->style->getCellRowContentFormat()) - 2;
+>>>>>>> pantheon-drops-8/master
         }
     }
 
@@ -623,7 +647,11 @@ class Table
      */
     private function getColumnSeparatorWidth()
     {
+<<<<<<< HEAD
         return Helper::strlen(sprintf($this->style->getBorderFormat(), $this->style->getVerticalBorderChar()));
+=======
+        return \strlen(sprintf($this->style->getBorderFormat(), $this->style->getVerticalBorderChar()));
+>>>>>>> pantheon-drops-8/master
     }
 
     /**

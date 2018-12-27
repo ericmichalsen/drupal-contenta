@@ -209,9 +209,13 @@ class Session implements SessionInterface, \IteratorAggregate, \Countable
      */
     public function setId($id)
     {
+<<<<<<< HEAD
         if ($this->storage->getId() !== $id) {
             $this->storage->setId($id);
         }
+=======
+        $this->storage->setId($id);
+>>>>>>> pantheon-drops-8/master
     }
 
     /**

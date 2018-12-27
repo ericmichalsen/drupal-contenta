@@ -26,9 +26,12 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 */
+<<<<<<< HEAD
 
 use Masterminds\HTML5\Exception;
 
+=======
+>>>>>>> pantheon-drops-8/master
 /**
  * UTF-8 Utilities
  */
@@ -47,10 +50,13 @@ class UTF8Utils
      * MB, libxml, and finally a custom counter.
      *
      * @todo Move this to a general utility class.
+<<<<<<< HEAD
      *
      * @param string $string
      *
      * @return int
+=======
+>>>>>>> pantheon-drops-8/master
      */
     public static function countChars($string)
     {
@@ -80,8 +86,11 @@ class UTF8Utils
      *            The data to convert.
      * @param string $encoding
      *            A valid encoding. Examples: http://www.php.net/manual/en/mbstring.supported-encodings.php
+<<<<<<< HEAD
      *
      * @return string
+=======
+>>>>>>> pantheon-drops-8/master
      */
     public static function convertToUTF8($data, $encoding = 'UTF-8')
     {
@@ -116,6 +125,10 @@ class UTF8Utils
             // - Incomplete sequences generate a warning.
             $data = @iconv($encoding, 'UTF-8//IGNORE', $data);
         } else {
+<<<<<<< HEAD
+=======
+            // we can make a conforming native implementation
+>>>>>>> pantheon-drops-8/master
             throw new Exception('Not implemented, please install mbstring or iconv');
         }
 
@@ -132,12 +145,24 @@ class UTF8Utils
     /**
      * Checks for Unicode code points that are not valid in a document.
      *
+<<<<<<< HEAD
      * @param string $data A string to analyze.
      *
+=======
+     * @param string $data
+     *            A string to analyze.
+>>>>>>> pantheon-drops-8/master
      * @return array An array of (string) error messages produced by the scanning.
      */
     public static function checkForIllegalCodepoints($data)
     {
+<<<<<<< HEAD
+=======
+        if (! function_exists('preg_match_all')) {
+            throw\Exception('The PCRE library is not loaded or is not available.');
+        }
+
+>>>>>>> pantheon-drops-8/master
         // Vestigal error handling.
         $errors = array();
 

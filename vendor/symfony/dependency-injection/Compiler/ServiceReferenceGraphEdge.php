@@ -25,7 +25,10 @@ class ServiceReferenceGraphEdge
     private $value;
     private $lazy;
     private $weak;
+<<<<<<< HEAD
     private $byConstructor;
+=======
+>>>>>>> pantheon-drops-8/master
 
     /**
      * @param ServiceReferenceGraphNode $sourceNode
@@ -33,16 +36,24 @@ class ServiceReferenceGraphEdge
      * @param mixed                     $value
      * @param bool                      $lazy
      * @param bool                      $weak
+<<<<<<< HEAD
      * @param bool                      $byConstructor
      */
     public function __construct(ServiceReferenceGraphNode $sourceNode, ServiceReferenceGraphNode $destNode, $value = null, $lazy = false, $weak = false, $byConstructor = false)
+=======
+     */
+    public function __construct(ServiceReferenceGraphNode $sourceNode, ServiceReferenceGraphNode $destNode, $value = null, $lazy = false, $weak = false)
+>>>>>>> pantheon-drops-8/master
     {
         $this->sourceNode = $sourceNode;
         $this->destNode = $destNode;
         $this->value = $value;
         $this->lazy = $lazy;
         $this->weak = $weak;
+<<<<<<< HEAD
         $this->byConstructor = $byConstructor;
+=======
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -94,6 +105,7 @@ class ServiceReferenceGraphEdge
     {
         return $this->weak;
     }
+<<<<<<< HEAD
 
     /**
      * Returns true if the edge links with a constructor argument.
@@ -104,4 +116,6 @@ class ServiceReferenceGraphEdge
     {
         return $this->byConstructor;
     }
+=======
+>>>>>>> pantheon-drops-8/master
 }

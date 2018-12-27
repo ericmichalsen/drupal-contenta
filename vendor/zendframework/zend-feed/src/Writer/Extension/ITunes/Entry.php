@@ -9,8 +9,13 @@
 
 namespace Zend\Feed\Writer\Extension\ITunes;
 
+<<<<<<< HEAD
 use Zend\Feed\Uri;
 use Zend\Feed\Writer;
+=======
+use Zend\Feed\Writer;
+use Zend\Feed\Writer\Extension;
+>>>>>>> pantheon-drops-8/master
 use Zend\Stdlib\StringUtils;
 use Zend\Stdlib\StringWrapper\StringWrapperInterface;
 
@@ -76,7 +81,11 @@ class Entry
      */
     public function setItunesBlock($value)
     {
+<<<<<<< HEAD
         if (! ctype_alpha($value) && strlen($value) > 0) {
+=======
+        if (!ctype_alpha($value) && strlen($value) > 0) {
+>>>>>>> pantheon-drops-8/master
             throw new Writer\Exception\InvalidArgumentException('invalid parameter: "block" may only'
             . ' contain alphabetic characters');
         }
@@ -115,7 +124,11 @@ class Entry
             throw new Writer\Exception\InvalidArgumentException('invalid parameter: any "author" may only'
             . ' contain a maximum of 255 characters each');
         }
+<<<<<<< HEAD
         if (! isset($this->data['authors'])) {
+=======
+        if (!isset($this->data['authors'])) {
+>>>>>>> pantheon-drops-8/master
             $this->data['authors'] = [];
         }
         $this->data['authors'][] = $value;
@@ -132,9 +145,15 @@ class Entry
     public function setItunesDuration($value)
     {
         $value = (string) $value;
+<<<<<<< HEAD
         if (! ctype_digit($value)
             && ! preg_match("/^\d+:[0-5]{1}[0-9]{1}$/", $value)
             && ! preg_match("/^\d+:[0-5]{1}[0-9]{1}:[0-5]{1}[0-9]{1}$/", $value)
+=======
+        if (!ctype_digit($value)
+            && !preg_match("/^\d+:[0-5]{1}[0-9]{1}$/", $value)
+            && !preg_match("/^\d+:[0-5]{1}[0-9]{1}:[0-5]{1}[0-9]{1}$/", $value)
+>>>>>>> pantheon-drops-8/master
         ) {
             throw new Writer\Exception\InvalidArgumentException('invalid parameter: "duration" may only'
             . ' be of a specified [[HH:]MM:]SS format');
@@ -152,7 +171,11 @@ class Entry
      */
     public function setItunesExplicit($value)
     {
+<<<<<<< HEAD
         if (! in_array($value, ['yes', 'no', 'clean'])) {
+=======
+        if (!in_array($value, ['yes', 'no', 'clean'])) {
+>>>>>>> pantheon-drops-8/master
             throw new Writer\Exception\InvalidArgumentException('invalid parameter: "explicit" may only'
             . ' be one of "yes", "no" or "clean"');
         }
@@ -163,20 +186,26 @@ class Entry
     /**
      * Set keywords
      *
+<<<<<<< HEAD
      * @deprecated since 2.10.0; itunes:keywords is no longer part of the
      *     iTunes podcast RSS specification.
+=======
+>>>>>>> pantheon-drops-8/master
      * @param  array $value
      * @return Entry
      * @throws Writer\Exception\InvalidArgumentException
      */
     public function setItunesKeywords(array $value)
     {
+<<<<<<< HEAD
         trigger_error(
             'itunes:keywords has been deprecated in the iTunes podcast RSS specification,'
             . ' and should not be relied on.',
             \E_USER_DEPRECATED
         );
 
+=======
+>>>>>>> pantheon-drops-8/master
         if (count($value) > 12) {
             throw new Writer\Exception\InvalidArgumentException('invalid parameter: "keywords" may only'
             . ' contain a maximum of 12 terms');
@@ -227,6 +256,7 @@ class Entry
     }
 
     /**
+<<<<<<< HEAD
      * Set entry image (icon)
      *
      * @param  string $value
@@ -344,6 +374,8 @@ class Entry
     }
 
     /**
+=======
+>>>>>>> pantheon-drops-8/master
      * Overloading to itunes specific setters
      *
      * @param  string $method
@@ -354,14 +386,23 @@ class Entry
     public function __call($method, array $params)
     {
         $point = lcfirst(substr($method, 9));
+<<<<<<< HEAD
         if (! method_exists($this, 'setItunes' . ucfirst($point))
             && ! method_exists($this, 'addItunes' . ucfirst($point))
+=======
+        if (!method_exists($this, 'setItunes' . ucfirst($point))
+            && !method_exists($this, 'addItunes' . ucfirst($point))
+>>>>>>> pantheon-drops-8/master
         ) {
             throw new Writer\Exception\BadMethodCallException(
                 'invalid method: ' . $method
             );
         }
+<<<<<<< HEAD
         if (! array_key_exists($point, $this->data)
+=======
+        if (!array_key_exists($point, $this->data)
+>>>>>>> pantheon-drops-8/master
             || empty($this->data[$point])
         ) {
             return;

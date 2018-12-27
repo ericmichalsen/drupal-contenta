@@ -38,7 +38,11 @@ class GenericEvent extends Event implements \ArrayAccess, \IteratorAggregate
     /**
      * Getter for subject property.
      *
+<<<<<<< HEAD
      * @return mixed The observer subject
+=======
+     * @return mixed $subject The observer subject
+>>>>>>> pantheon-drops-8/master
      */
     public function getSubject()
     {

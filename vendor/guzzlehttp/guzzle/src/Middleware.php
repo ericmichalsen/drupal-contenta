@@ -34,11 +34,18 @@ final class Middleware
                 $cookieJar = $options['cookies'];
                 $request = $cookieJar->withCookieHeader($request);
                 return $handler($request, $options)
+<<<<<<< HEAD
                     ->then(
                         function ($response) use ($cookieJar, $request) {
                             $cookieJar->extractCookies($request, $response);
                             return $response;
                         }
+=======
+                    ->then(function ($response) use ($cookieJar, $request) {
+                        $cookieJar->extractCookies($request, $response);
+                        return $response;
+                    }
+>>>>>>> pantheon-drops-8/master
                 );
             };
         };
@@ -73,7 +80,11 @@ final class Middleware
     /**
      * Middleware that pushes history data to an ArrayAccess container.
      *
+<<<<<<< HEAD
      * @param array|\ArrayAccess $container Container to hold the history (by reference).
+=======
+     * @param array $container Container to hold the history (by reference).
+>>>>>>> pantheon-drops-8/master
      *
      * @return callable Returns a function that accepts the next handler.
      * @throws \InvalidArgumentException if container is not an array or ArrayAccess.

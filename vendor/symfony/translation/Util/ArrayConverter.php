@@ -69,7 +69,11 @@ class ArrayConverter
             $elem = &$elem[$part];
         }
 
+<<<<<<< HEAD
         if ($elem && \is_array($elem) && $parentOfElem) {
+=======
+        if (\is_array($elem) && \count($elem) > 0 && $parentOfElem) {
+>>>>>>> pantheon-drops-8/master
             /* Process next case:
              *    'foo.bar': 'test1'
              *    'foo': 'test2'

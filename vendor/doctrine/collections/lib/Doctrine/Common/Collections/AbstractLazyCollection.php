@@ -37,7 +37,11 @@ abstract class AbstractLazyCollection implements Collection
     protected $collection;
 
     /**
+<<<<<<< HEAD
      * @var bool
+=======
+     * @var boolean
+>>>>>>> pantheon-drops-8/master
      */
     protected $initialized = false;
 

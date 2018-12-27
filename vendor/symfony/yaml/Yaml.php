@@ -42,10 +42,18 @@ class Yaml
     /**
      * Parses a YAML file into a PHP value.
      *
+<<<<<<< HEAD
      * Usage:
      *
      *     $array = Yaml::parseFile('config.yml');
      *     print_r($array);
+=======
+     *  Usage:
+     *  <code>
+     *   $array = Yaml::parseFile('config.yml');
+     *   print_r($array);
+     *  </code>
+>>>>>>> pantheon-drops-8/master
      *
      * @param string $filename The path to the YAML file to be parsed
      * @param int    $flags    A bit field of PARSE_* constants to customize the YAML parser behavior

@@ -103,7 +103,11 @@ class ProcessBuilder
     /**
      * Sets the working directory.
      *
+<<<<<<< HEAD
      * @param string|null $cwd The working directory
+=======
+     * @param null|string $cwd The working directory
+>>>>>>> pantheon-drops-8/master
      *
      * @return $this
      */
@@ -135,7 +139,11 @@ class ProcessBuilder
      * defined environment variable.
      *
      * @param string      $name  The variable name
+<<<<<<< HEAD
      * @param string|null $value The variable value
+=======
+     * @param null|string $value The variable value
+>>>>>>> pantheon-drops-8/master
      *
      * @return $this
      */

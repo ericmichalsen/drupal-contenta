@@ -13,7 +13,10 @@ namespace Symfony\Component\Validator\Constraints;
 
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
+<<<<<<< HEAD
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
+=======
+>>>>>>> pantheon-drops-8/master
 
 /**
  * @author Michael Hirschler <michael.vhirsch@gmail.com>
@@ -27,10 +30,13 @@ class BicValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
+<<<<<<< HEAD
         if (!$constraint instanceof Bic) {
             throw new UnexpectedTypeException($constraint, __NAMESPACE__.'\Bic');
         }
 
+=======
+>>>>>>> pantheon-drops-8/master
         if (null === $value || '' === $value) {
             return;
         }

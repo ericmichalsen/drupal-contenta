@@ -56,7 +56,11 @@ class ClassCollectionLoader
             $classes = array_diff($classes, $declared);
 
             // the cache is different depending on which classes are already declared
+<<<<<<< HEAD
             $name .= '-'.substr(hash('sha256', implode('|', $classes)), 0, 5);
+=======
+            $name = $name.'-'.substr(hash('sha256', implode('|', $classes)), 0, 5);
+>>>>>>> pantheon-drops-8/master
         }
 
         $classes = array_unique($classes);

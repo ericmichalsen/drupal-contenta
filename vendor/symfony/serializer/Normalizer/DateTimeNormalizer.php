@@ -59,8 +59,12 @@ class DateTimeNormalizer implements NormalizerInterface, DenormalizerInterface
         $timezone = $this->getTimezone($context);
 
         if (null !== $timezone) {
+<<<<<<< HEAD
             $object = clone $object;
             $object = $object->setTimezone($timezone);
+=======
+            $object = (new \DateTimeImmutable('@'.$object->getTimestamp()))->setTimezone($timezone);
+>>>>>>> pantheon-drops-8/master
         }
 
         return $object->format($format);

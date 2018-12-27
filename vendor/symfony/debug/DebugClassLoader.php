@@ -129,6 +129,11 @@ class DebugClassLoader
      *
      * @param string $class The name of the class
      *
+<<<<<<< HEAD
+=======
+     * @return bool|null True, if loaded
+     *
+>>>>>>> pantheon-drops-8/master
      * @throws \RuntimeException
      */
     public function loadClass($class)
@@ -138,6 +143,7 @@ class DebugClassLoader
         try {
             if ($this->isFinder && !isset($this->loaded[$class])) {
                 $this->loaded[$class] = true;
+<<<<<<< HEAD
                 if (!$file = $this->classLoader[0]->findFile($class) ?: false) {
                     // no-op
                 } elseif (\function_exists('opcache_is_script_cached') && @opcache_is_script_cached($file)) {
@@ -146,6 +152,16 @@ class DebugClassLoader
                     return;
                 } else {
                     require $file;
+=======
+                if ($file = $this->classLoader[0]->findFile($class) ?: false) {
+                    $wasCached = \function_exists('opcache_is_script_cached') && @opcache_is_script_cached($file);
+
+                    require $file;
+
+                    if ($wasCached) {
+                        return;
+                    }
+>>>>>>> pantheon-drops-8/master
                 }
             } else {
                 \call_user_func($this->classLoader, $class);
@@ -182,6 +198,7 @@ class DebugClassLoader
                 throw new \RuntimeException(sprintf('Case mismatch between loaded and declared class names: "%s" vs "%s".', $class, $name));
             }
 
+<<<<<<< HEAD
             $deprecations = $this->checkAnnotations($refl, $name);
 
             if (isset(self::$php7Reserved[\strtolower($refl->getShortName())])) {
@@ -403,6 +420,202 @@ class DebugClassLoader
         }
 
         return $real .= $dirFiles[$kFile];
+=======
+            // Don't trigger deprecations for classes in the same vendor
+            if (2 > $len = 1 + (\strpos($name, '\\') ?: \strpos($name, '_'))) {
+                $len = 0;
+                $ns = '';
+            } else {
+                $ns = \substr($name, 0, $len);
+            }
+
+            // Detect annotations on the class
+            if (false !== $doc = $refl->getDocComment()) {
+                foreach (array('final', 'deprecated', 'internal') as $annotation) {
+                    if (false !== \strpos($doc, $annotation) && preg_match('#\n \* @'.$annotation.'(?:( .+?)\.?)?\r?\n \*(?: @|/$)#s', $doc, $notice)) {
+                        self::${$annotation}[$name] = isset($notice[1]) ? preg_replace('#\s*\r?\n \* +#', ' ', $notice[1]) : '';
+                    }
+                }
+            }
+
+            $parentAndTraits = \class_uses($name, false);
+            if ($parent = \get_parent_class($class)) {
+                $parentAndTraits[] = $parent;
+
+                if (!isset(self::$checkedClasses[$parent])) {
+                    $this->checkClass($parent);
+                }
+
+                if (isset(self::$final[$parent])) {
+                    @trigger_error(sprintf('The "%s" class is considered final%s. It may change without further notice as of its next major version. You should not extend it from "%s".', $parent, self::$final[$parent], $name), E_USER_DEPRECATED);
+                }
+            }
+
+            // Detect if the parent is annotated
+            foreach ($parentAndTraits + $this->getOwnInterfaces($name, $parent) as $use) {
+                if (!isset(self::$checkedClasses[$use])) {
+                    $this->checkClass($use);
+                }
+                if (isset(self::$deprecated[$use]) && \strncmp($ns, $use, $len)) {
+                    $type = class_exists($name, false) ? 'class' : (interface_exists($name, false) ? 'interface' : 'trait');
+                    $verb = class_exists($use, false) || interface_exists($name, false) ? 'extends' : (interface_exists($use, false) ? 'implements' : 'uses');
+
+                    @trigger_error(sprintf('The "%s" %s %s "%s" that is deprecated%s.', $name, $type, $verb, $use, self::$deprecated[$use]), E_USER_DEPRECATED);
+                }
+                if (isset(self::$internal[$use]) && \strncmp($ns, $use, $len)) {
+                    @trigger_error(sprintf('The "%s" %s is considered internal%s. It may change without further notice. You should not use it from "%s".', $use, class_exists($use, false) ? 'class' : (interface_exists($use, false) ? 'interface' : 'trait'), self::$internal[$use], $name), E_USER_DEPRECATED);
+                }
+            }
+
+            // Inherit @final and @internal annotations for methods
+            self::$finalMethods[$name] = array();
+            self::$internalMethods[$name] = array();
+            foreach ($parentAndTraits as $use) {
+                foreach (array('finalMethods', 'internalMethods') as $property) {
+                    if (isset(self::${$property}[$use])) {
+                        self::${$property}[$name] = self::${$property}[$name] ? self::${$property}[$use] + self::${$property}[$name] : self::${$property}[$use];
+                    }
+                }
+            }
+
+            $isClass = \class_exists($name, false);
+            foreach ($refl->getMethods(\ReflectionMethod::IS_PUBLIC | \ReflectionMethod::IS_PROTECTED) as $method) {
+                if ($method->class !== $name) {
+                    continue;
+                }
+
+                // Method from a trait
+                if ($method->getFilename() !== $refl->getFileName()) {
+                    continue;
+                }
+
+                if ($isClass && $parent && isset(self::$finalMethods[$parent][$method->name])) {
+                    list($declaringClass, $message) = self::$finalMethods[$parent][$method->name];
+                    @trigger_error(sprintf('The "%s::%s()" method is considered final%s. It may change without further notice as of its next major version. You should not extend it from "%s".', $declaringClass, $method->name, $message, $name), E_USER_DEPRECATED);
+                }
+
+                foreach ($parentAndTraits as $use) {
+                    if (isset(self::$internalMethods[$use][$method->name])) {
+                        list($declaringClass, $message) = self::$internalMethods[$use][$method->name];
+                        if (\strncmp($ns, $declaringClass, $len)) {
+                            @trigger_error(sprintf('The "%s::%s()" method is considered internal%s. It may change without further notice. You should not extend it from "%s".', $declaringClass, $method->name, $message, $name), E_USER_DEPRECATED);
+                        }
+                    }
+                }
+
+                // Detect method annotations
+                if (false === $doc = $method->getDocComment()) {
+                    continue;
+                }
+
+                foreach (array('final', 'internal') as $annotation) {
+                    if (false !== \strpos($doc, $annotation) && preg_match('#\n\s+\* @'.$annotation.'(?:( .+?)\.?)?\r?\n\s+\*(?: @|/$)#s', $doc, $notice)) {
+                        $message = isset($notice[1]) ? preg_replace('#\s*\r?\n \* +#', ' ', $notice[1]) : '';
+                        self::${$annotation.'Methods'}[$name][$method->name] = array($name, $message);
+                    }
+                }
+            }
+
+            if (isset(self::$php7Reserved[\strtolower($refl->getShortName())])) {
+                @trigger_error(sprintf('The "%s" class uses the reserved name "%s", it will break on PHP 7 and higher', $name, $refl->getShortName()), E_USER_DEPRECATED);
+            }
+        }
+
+        if ($file) {
+            if (!$exists) {
+                if (false !== strpos($class, '/')) {
+                    throw new \RuntimeException(sprintf('Trying to autoload a class with an invalid name "%s". Be careful that the namespace separator is "\" in PHP, not "/".', $class));
+                }
+
+                throw new \RuntimeException(sprintf('The autoloader expected class "%s" to be defined in file "%s". The file was found but the class was not in it, the class name or namespace probably has a typo.', $class, $file));
+            }
+            if (self::$caseCheck) {
+                $real = explode('\\', $class.strrchr($file, '.'));
+                $tail = explode(\DIRECTORY_SEPARATOR, str_replace('/', \DIRECTORY_SEPARATOR, $file));
+
+                $i = \count($tail) - 1;
+                $j = \count($real) - 1;
+
+                while (isset($tail[$i], $real[$j]) && $tail[$i] === $real[$j]) {
+                    --$i;
+                    --$j;
+                }
+
+                array_splice($tail, 0, $i + 1);
+            }
+            if (self::$caseCheck && $tail) {
+                $tail = \DIRECTORY_SEPARATOR.implode(\DIRECTORY_SEPARATOR, $tail);
+                $tailLen = \strlen($tail);
+                $real = $refl->getFileName();
+
+                if (2 === self::$caseCheck) {
+                    // realpath() on MacOSX doesn't normalize the case of characters
+
+                    $i = 1 + strrpos($real, '/');
+                    $file = substr($real, $i);
+                    $real = substr($real, 0, $i);
+
+                    if (isset(self::$darwinCache[$real])) {
+                        $kDir = $real;
+                    } else {
+                        $kDir = strtolower($real);
+
+                        if (isset(self::$darwinCache[$kDir])) {
+                            $real = self::$darwinCache[$kDir][0];
+                        } else {
+                            $dir = getcwd();
+                            chdir($real);
+                            $real = getcwd().'/';
+                            chdir($dir);
+
+                            $dir = $real;
+                            $k = $kDir;
+                            $i = \strlen($dir) - 1;
+                            while (!isset(self::$darwinCache[$k])) {
+                                self::$darwinCache[$k] = array($dir, array());
+                                self::$darwinCache[$dir] = &self::$darwinCache[$k];
+
+                                while ('/' !== $dir[--$i]) {
+                                }
+                                $k = substr($k, 0, ++$i);
+                                $dir = substr($dir, 0, $i--);
+                            }
+                        }
+                    }
+
+                    $dirFiles = self::$darwinCache[$kDir][1];
+
+                    if (isset($dirFiles[$file])) {
+                        $kFile = $file;
+                    } else {
+                        $kFile = strtolower($file);
+
+                        if (!isset($dirFiles[$kFile])) {
+                            foreach (scandir($real, 2) as $f) {
+                                if ('.' !== $f[0]) {
+                                    $dirFiles[$f] = $f;
+                                    if ($f === $file) {
+                                        $kFile = $k = $file;
+                                    } elseif ($f !== $k = strtolower($f)) {
+                                        $dirFiles[$k] = $f;
+                                    }
+                                }
+                            }
+                            self::$darwinCache[$kDir][1] = $dirFiles;
+                        }
+                    }
+
+                    $real .= $dirFiles[$kFile];
+                }
+
+                if (0 === substr_compare($real, $tail, -$tailLen, $tailLen, true)
+                  && 0 !== substr_compare($real, $tail, -$tailLen, $tailLen, false)
+                ) {
+                    throw new \RuntimeException(sprintf('Case mismatch between class and real file names: "%s" vs "%s" in "%s".', substr($tail, -$tailLen + 1), substr($real, -$tailLen + 1), substr($real, 0, -$tailLen + 1)));
+                }
+            }
+        }
+>>>>>>> pantheon-drops-8/master
     }
 
     /**

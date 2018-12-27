@@ -12,7 +12,11 @@ use Psr\Http\Message\UriInterface;
  */
 interface ClientInterface
 {
+<<<<<<< HEAD
     const VERSION = '6.3.3';
+=======
+    const VERSION = '6.2.1';
+>>>>>>> pantheon-drops-8/master
 
     /**
      * Send an HTTP request.

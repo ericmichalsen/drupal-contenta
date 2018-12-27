@@ -199,7 +199,11 @@ class Atom extends AbstractEntry implements EntryInterface
      */
     public function getLink($index = 0)
     {
+<<<<<<< HEAD
         if (! array_key_exists('links', $this->data)) {
+=======
+        if (!array_key_exists('links', $this->data)) {
+>>>>>>> pantheon-drops-8/master
             $this->getLinks();
         }
 
@@ -269,7 +273,11 @@ class Atom extends AbstractEntry implements EntryInterface
 
         $commentcount = $this->getExtension('Thread')->getCommentCount();
 
+<<<<<<< HEAD
         if (! $commentcount) {
+=======
+        if (!$commentcount) {
+>>>>>>> pantheon-drops-8/master
             $commentcount = $this->getExtension('Atom')->getCommentCount();
         }
 

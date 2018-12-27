@@ -83,7 +83,11 @@ class Elements
         "area" => 9, // NORMAL | VOID_TAG
         "article" => 81, // NORMAL | AUTOCLOSE_P | BLOCK_TAG
         "aside" => 81, // NORMAL | AUTOCLOSE_P | BLOCK_TAG
+<<<<<<< HEAD
         "audio" => 1, // NORMAL
+=======
+        "audio" => 65, // NORMAL | BLOCK_TAG
+>>>>>>> pantheon-drops-8/master
         "b" => 1,
         "base" => 9, // NORMAL | VOID_TAG
         "bdi" => 1,

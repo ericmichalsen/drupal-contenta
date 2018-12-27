@@ -452,6 +452,7 @@ class AutowirePass extends AbstractRecursivePass
 
     private function createTypeNotFoundMessage(TypedReference $reference, $label)
     {
+<<<<<<< HEAD
         $trackResources = $this->container->isTrackingResources();
         $this->container->setResourceTracking(false);
         try {
@@ -463,6 +464,9 @@ class AutowirePass extends AbstractRecursivePass
         }
 
         if (!$r) {
+=======
+        if (!$r = $this->container->getReflectionClass($type = $reference->getType(), false)) {
+>>>>>>> pantheon-drops-8/master
             // either $type does not exist or a parent class does not exist
             try {
                 $resource = new ClassExistenceResource($type, false);
@@ -475,6 +479,10 @@ class AutowirePass extends AbstractRecursivePass
 
             $message = sprintf('has type "%s" but this class %s.', $type, $parentMsg ? sprintf('is missing a parent class (%s)', $parentMsg) : 'was not found');
         } else {
+<<<<<<< HEAD
+=======
+            $alternatives = $this->createTypeAlternatives($reference);
+>>>>>>> pantheon-drops-8/master
             $message = $this->container->has($type) ? 'this service is abstract' : 'no such service exists';
             $message = sprintf('references %s "%s" but %s.%s', $r->isInterface() ? 'interface' : 'class', $type, $message, $alternatives);
 

@@ -334,9 +334,14 @@ class Response
 
         // headers
         foreach ($this->headers->allPreserveCaseWithoutCookies() as $name => $values) {
+<<<<<<< HEAD
             $replace = 0 === strcasecmp($name, 'Content-Type');
             foreach ($values as $value) {
                 header($name.': '.$value, $replace, $this->statusCode);
+=======
+            foreach ($values as $value) {
+                header($name.': '.$value, false, $this->statusCode);
+>>>>>>> pantheon-drops-8/master
             }
         }
 
@@ -975,7 +980,11 @@ class Response
     public function setCache(array $options)
     {
         if ($diff = array_diff(array_keys($options), array('etag', 'last_modified', 'max_age', 's_maxage', 'private', 'public', 'immutable'))) {
+<<<<<<< HEAD
             throw new \InvalidArgumentException(sprintf('Response does not support the following options: "%s".', implode('", "', $diff)));
+=======
+            throw new \InvalidArgumentException(sprintf('Response does not support the following options: "%s".', implode('", "', array_values($diff))));
+>>>>>>> pantheon-drops-8/master
         }
 
         if (isset($options['etag'])) {

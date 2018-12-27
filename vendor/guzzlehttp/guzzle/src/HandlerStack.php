@@ -22,7 +22,11 @@ class HandlerStack
      * Creates a default handler stack that can be used by clients.
      *
      * The returned handler will wrap the provided handler or use the most
+<<<<<<< HEAD
      * appropriate default handler for your system. The returned HandlerStack has
+=======
+     * appropriate default handler for you system. The returned HandlerStack has
+>>>>>>> pantheon-drops-8/master
      * support for cookies, redirects, HTTP error exceptions, and preparing a body
      * before sending.
      *

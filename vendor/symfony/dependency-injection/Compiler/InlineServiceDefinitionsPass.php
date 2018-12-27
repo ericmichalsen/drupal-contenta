@@ -127,19 +127,27 @@ class InlineServiceDefinitionsPass extends AbstractRecursivePass implements Repe
         }
 
         $ids = array();
+<<<<<<< HEAD
         $isReferencedByConstructor = false;
         foreach ($graph->getNode($id)->getInEdges() as $edge) {
             $isReferencedByConstructor = $isReferencedByConstructor || $edge->isReferencedByConstructor();
             if ($edge->isWeak() || $edge->isLazy()) {
+=======
+        foreach ($graph->getNode($id)->getInEdges() as $edge) {
+            if ($edge->isWeak()) {
+>>>>>>> pantheon-drops-8/master
                 return false;
             }
             $ids[] = $edge->getSourceNode()->getId();
         }
 
+<<<<<<< HEAD
         if (!$ids) {
             return true;
         }
 
+=======
+>>>>>>> pantheon-drops-8/master
         if (\count(array_unique($ids)) > 1) {
             return false;
         }
@@ -148,10 +156,14 @@ class InlineServiceDefinitionsPass extends AbstractRecursivePass implements Repe
             return false;
         }
 
+<<<<<<< HEAD
         if ($isReferencedByConstructor && $this->container->getDefinition($ids[0])->isLazy() && ($definition->getProperties() || $definition->getMethodCalls() || $definition->getConfigurator())) {
             return false;
         }
 
         return $this->container->getDefinition($ids[0])->isShared();
+=======
+        return !$ids || $this->container->getDefinition($ids[0])->isShared();
+>>>>>>> pantheon-drops-8/master
     }
 }

@@ -72,7 +72,14 @@ abstract class MemberMetadata extends GenericMetadata implements PropertyMetadat
     public function addConstraint(Constraint $constraint)
     {
         if (!\in_array(Constraint::PROPERTY_CONSTRAINT, (array) $constraint->getTargets())) {
+<<<<<<< HEAD
             throw new ConstraintDefinitionException(sprintf('The constraint %s cannot be put on properties or getters', \get_class($constraint)));
+=======
+            throw new ConstraintDefinitionException(sprintf(
+                'The constraint %s cannot be put on properties or getters',
+                \get_class($constraint)
+            ));
+>>>>>>> pantheon-drops-8/master
         }
 
         parent::addConstraint($constraint);

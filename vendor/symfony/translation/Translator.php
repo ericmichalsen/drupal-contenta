@@ -179,7 +179,11 @@ class Translator implements TranslatorInterface, TranslatorBagInterface
     /**
      * Gets the fallback locales.
      *
+<<<<<<< HEAD
      * @return array The fallback locales
+=======
+     * @return array $locales The fallback locales
+>>>>>>> pantheon-drops-8/master
      */
     public function getFallbackLocales()
     {

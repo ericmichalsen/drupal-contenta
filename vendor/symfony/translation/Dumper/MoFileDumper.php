@@ -57,7 +57,11 @@ class MoFileDumper extends FileDumper
                           .$this->writeLong($offset[2] + $sourcesStart + $sourcesSize);
         }
 
+<<<<<<< HEAD
         $output = implode('', array_map(array($this, 'writeLong'), $header))
+=======
+        $output = implode(array_map(array($this, 'writeLong'), $header))
+>>>>>>> pantheon-drops-8/master
                .$sourceOffsets
                .$targetOffsets
                .$sources

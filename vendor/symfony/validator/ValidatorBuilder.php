@@ -68,7 +68,11 @@ class ValidatorBuilder implements ValidatorBuilderInterface
     private $translator;
 
     /**
+<<<<<<< HEAD
      * @var string|null
+=======
+     * @var null|string
+>>>>>>> pantheon-drops-8/master
      */
     private $translationDomain;
 

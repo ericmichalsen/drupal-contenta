@@ -16,11 +16,19 @@
  */
 class Twig_Environment
 {
+<<<<<<< HEAD
     const VERSION = '1.36.0';
     const VERSION_ID = 13600;
     const MAJOR_VERSION = 1;
     const MINOR_VERSION = 36;
     const RELEASE_VERSION = 0;
+=======
+    const VERSION = '1.35.4';
+    const VERSION_ID = 13504;
+    const MAJOR_VERSION = 1;
+    const MINOR_VERSION = 35;
+    const RELEASE_VERSION = 4;
+>>>>>>> pantheon-drops-8/master
     const EXTRA_VERSION = '';
 
     protected $charset;
@@ -1240,6 +1248,7 @@ class Twig_Environment
             return $this->tests[$name];
         }
 
+<<<<<<< HEAD
         foreach ($this->tests as $pattern => $test) {
             $pattern = str_replace('\\*', '(.*?)', preg_quote($pattern, '#'), $count);
 
@@ -1253,6 +1262,8 @@ class Twig_Environment
             }
         }
 
+=======
+>>>>>>> pantheon-drops-8/master
         return false;
     }
 

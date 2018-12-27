@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 return array(
+=======
+static $data = array (
+>>>>>>> pantheon-drops-8/master
   'A' => 'a',
   'B' => 'b',
   'C' => 'c',
@@ -1094,3 +1098,11 @@ return array(
   '𑢾' => '𑣞',
   '𑢿' => '𑣟',
 );
+<<<<<<< HEAD
+=======
+
+$result =& $data;
+unset($data);
+
+return $result;
+>>>>>>> pantheon-drops-8/master

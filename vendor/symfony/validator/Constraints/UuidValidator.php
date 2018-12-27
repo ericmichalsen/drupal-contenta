@@ -66,14 +66,24 @@ class UuidValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
+<<<<<<< HEAD
         if (!$constraint instanceof Uuid) {
             throw new UnexpectedTypeException($constraint, __NAMESPACE__.'\Uuid');
         }
 
+=======
+>>>>>>> pantheon-drops-8/master
         if (null === $value || '' === $value) {
             return;
         }
 
+<<<<<<< HEAD
+=======
+        if (!$constraint instanceof Uuid) {
+            throw new UnexpectedTypeException($constraint, __NAMESPACE__.'\Uuid');
+        }
+
+>>>>>>> pantheon-drops-8/master
         if (!is_scalar($value) && !(\is_object($value) && method_exists($value, '__toString'))) {
             throw new UnexpectedTypeException($value, 'string');
         }

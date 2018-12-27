@@ -4,6 +4,10 @@ namespace GuzzleHttp\Handler;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Promise\FulfilledPromise;
+<<<<<<< HEAD
+=======
+use GuzzleHttp\Promise\RejectedPromise;
+>>>>>>> pantheon-drops-8/master
 use GuzzleHttp\Psr7;
 use GuzzleHttp\Psr7\LazyOpenStream;
 use GuzzleHttp\TransferStats;
@@ -287,6 +291,7 @@ class CurlFactory implements CurlFactoryInterface
     {
         foreach ($conf['_headers'] as $name => $values) {
             foreach ($values as $value) {
+<<<<<<< HEAD
                 $value = (string) $value;
                 if ($value === '') {
                     // cURL requires a special format for empty headers.
@@ -295,6 +300,9 @@ class CurlFactory implements CurlFactoryInterface
                 } else {
                     $conf[CURLOPT_HTTPHEADER][] = "$name: $value";
                 }
+=======
+                $conf[CURLOPT_HTTPHEADER][] = "$name: $value";
+>>>>>>> pantheon-drops-8/master
             }
         }
 
@@ -394,7 +402,11 @@ class CurlFactory implements CurlFactoryInterface
         if (isset($options['force_ip_resolve'])) {
             if ('v4' === $options['force_ip_resolve']) {
                 $conf[CURLOPT_IPRESOLVE] = CURL_IPRESOLVE_V4;
+<<<<<<< HEAD
             } elseif ('v6' === $options['force_ip_resolve']) {
+=======
+            } else if ('v6' === $options['force_ip_resolve']) {
+>>>>>>> pantheon-drops-8/master
                 $conf[CURLOPT_IPRESOLVE] = CURL_IPRESOLVE_V6;
             }
         }

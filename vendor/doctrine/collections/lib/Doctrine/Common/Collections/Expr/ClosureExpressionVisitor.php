@@ -35,7 +35,11 @@ class ClosureExpressionVisitor extends ExpressionVisitor
      * directly or indirectly (through an accessor get*, is*, or a magic
      * method, __get, __call).
      *
+<<<<<<< HEAD
      * @param object|array $object
+=======
+     * @param object $object
+>>>>>>> pantheon-drops-8/master
      * @param string $field
      *
      * @return mixed
@@ -46,7 +50,11 @@ class ClosureExpressionVisitor extends ExpressionVisitor
             return $object[$field];
         }
 
+<<<<<<< HEAD
         $accessors = ['get', 'is'];
+=======
+        $accessors = array('get', 'is');
+>>>>>>> pantheon-drops-8/master
 
         foreach ($accessors as $accessor) {
             $accessor .= $field;
@@ -69,6 +77,7 @@ class ClosureExpressionVisitor extends ExpressionVisitor
             return $object[$field];
         }
 
+<<<<<<< HEAD
         if (isset($object->$field)) {
             return $object->$field;
         }
@@ -87,6 +96,8 @@ class ClosureExpressionVisitor extends ExpressionVisitor
             return $object->$accessor();
         }
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $object->$field;
     }
 
@@ -102,12 +113,20 @@ class ClosureExpressionVisitor extends ExpressionVisitor
     public static function sortByField($name, $orientation = 1, \Closure $next = null)
     {
         if ( ! $next) {
+<<<<<<< HEAD
             $next = function() : int {
+=======
+            $next = function() {
+>>>>>>> pantheon-drops-8/master
                 return 0;
             };
         }
 
+<<<<<<< HEAD
         return function ($a, $b) use ($name, $next, $orientation) : int {
+=======
+        return function ($a, $b) use ($name, $next, $orientation) {
+>>>>>>> pantheon-drops-8/master
             $aValue = ClosureExpressionVisitor::getObjectFieldValue($a, $name);
             $bValue = ClosureExpressionVisitor::getObjectFieldValue($b, $name);
 
@@ -129,36 +148,61 @@ class ClosureExpressionVisitor extends ExpressionVisitor
 
         switch ($comparison->getOperator()) {
             case Comparison::EQ:
+<<<<<<< HEAD
                 return function ($object) use ($field, $value) : bool {
+=======
+                return function ($object) use ($field, $value) {
+>>>>>>> pantheon-drops-8/master
                     return ClosureExpressionVisitor::getObjectFieldValue($object, $field) === $value;
                 };
 
             case Comparison::NEQ:
+<<<<<<< HEAD
                 return function ($object) use ($field, $value) : bool {
+=======
+                return function ($object) use ($field, $value) {
+>>>>>>> pantheon-drops-8/master
                     return ClosureExpressionVisitor::getObjectFieldValue($object, $field) !== $value;
                 };
 
             case Comparison::LT:
+<<<<<<< HEAD
                 return function ($object) use ($field, $value) : bool {
+=======
+                return function ($object) use ($field, $value) {
+>>>>>>> pantheon-drops-8/master
                     return ClosureExpressionVisitor::getObjectFieldValue($object, $field) < $value;
                 };
 
             case Comparison::LTE:
+<<<<<<< HEAD
                 return function ($object) use ($field, $value) : bool {
+=======
+                return function ($object) use ($field, $value) {
+>>>>>>> pantheon-drops-8/master
                     return ClosureExpressionVisitor::getObjectFieldValue($object, $field) <= $value;
                 };
 
             case Comparison::GT:
+<<<<<<< HEAD
                 return function ($object) use ($field, $value) : bool {
+=======
+                return function ($object) use ($field, $value) {
+>>>>>>> pantheon-drops-8/master
                     return ClosureExpressionVisitor::getObjectFieldValue($object, $field) > $value;
                 };
 
             case Comparison::GTE:
+<<<<<<< HEAD
                 return function ($object) use ($field, $value) : bool {
+=======
+                return function ($object) use ($field, $value) {
+>>>>>>> pantheon-drops-8/master
                     return ClosureExpressionVisitor::getObjectFieldValue($object, $field) >= $value;
                 };
 
             case Comparison::IN:
+<<<<<<< HEAD
                 return function ($object) use ($field, $value) : bool {
                     return in_array(ClosureExpressionVisitor::getObjectFieldValue($object, $field), $value, true);
                 };
@@ -166,6 +210,15 @@ class ClosureExpressionVisitor extends ExpressionVisitor
             case Comparison::NIN:
                 return function ($object) use ($field, $value) : bool {
                     return ! in_array(ClosureExpressionVisitor::getObjectFieldValue($object, $field), $value, true);
+=======
+                return function ($object) use ($field, $value) {
+                    return in_array(ClosureExpressionVisitor::getObjectFieldValue($object, $field), $value);
+                };
+
+            case Comparison::NIN:
+                return function ($object) use ($field, $value) {
+                    return ! in_array(ClosureExpressionVisitor::getObjectFieldValue($object, $field), $value);
+>>>>>>> pantheon-drops-8/master
                 };
 
             case Comparison::CONTAINS:
@@ -173,6 +226,7 @@ class ClosureExpressionVisitor extends ExpressionVisitor
                     return false !== strpos(ClosureExpressionVisitor::getObjectFieldValue($object, $field), $value);
                 };
 
+<<<<<<< HEAD
             case Comparison::MEMBER_OF:
                 return function ($object) use ($field, $value) : bool {
                     $fieldValues = ClosureExpressionVisitor::getObjectFieldValue($object, $field);
@@ -193,6 +247,8 @@ class ClosureExpressionVisitor extends ExpressionVisitor
                 };
 
 
+=======
+>>>>>>> pantheon-drops-8/master
             default:
                 throw new \RuntimeException("Unknown comparison operator: " . $comparison->getOperator());
         }
@@ -211,7 +267,11 @@ class ClosureExpressionVisitor extends ExpressionVisitor
      */
     public function walkCompositeExpression(CompositeExpression $expr)
     {
+<<<<<<< HEAD
         $expressionList = [];
+=======
+        $expressionList = array();
+>>>>>>> pantheon-drops-8/master
 
         foreach ($expr->getExpressionList() as $child) {
             $expressionList[] = $this->dispatch($child);
@@ -234,15 +294,24 @@ class ClosureExpressionVisitor extends ExpressionVisitor
      *
      * @return callable
      */
+<<<<<<< HEAD
     private function andExpressions(array $expressions) : callable
     {
         return function ($object) use ($expressions) : bool {
+=======
+    private function andExpressions($expressions)
+    {
+        return function ($object) use ($expressions) {
+>>>>>>> pantheon-drops-8/master
             foreach ($expressions as $expression) {
                 if ( ! $expression($object)) {
                     return false;
                 }
             }
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
             return true;
         };
     }
@@ -252,15 +321,24 @@ class ClosureExpressionVisitor extends ExpressionVisitor
      *
      * @return callable
      */
+<<<<<<< HEAD
     private function orExpressions(array $expressions) : callable
     {
         return function ($object) use ($expressions) : bool {
+=======
+    private function orExpressions($expressions)
+    {
+        return function ($object) use ($expressions) {
+>>>>>>> pantheon-drops-8/master
             foreach ($expressions as $expression) {
                 if ($expression($object)) {
                     return true;
                 }
             }
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
             return false;
         };
     }

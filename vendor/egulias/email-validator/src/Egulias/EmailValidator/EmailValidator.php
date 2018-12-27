@@ -133,7 +133,11 @@ class EmailValidator implements EmailValidatorInterface
             return false;
         }
 
+<<<<<<< HEAD
         return !($dnsProblemExists || $strict && $this->hasWarnings());
+=======
+        return ($strict ? (!$this->hasWarnings() && !$dnsProblemExists) : true);
+>>>>>>> pantheon-drops-8/master
     }
 
     /**

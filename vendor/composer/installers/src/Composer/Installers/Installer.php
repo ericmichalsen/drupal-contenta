@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 
 namespace Composer\Installers;
 
@@ -13,6 +14,17 @@ use Composer\Util\Filesystem;
 class Installer extends LibraryInstaller
 {
 
+=======
+namespace Composer\Installers;
+
+use Composer\IO\IOInterface;
+use Composer\Installer\LibraryInstaller;
+use Composer\Package\PackageInterface;
+use Composer\Repository\InstalledRepositoryInterface;
+
+class Installer extends LibraryInstaller
+{
+>>>>>>> pantheon-drops-8/master
     /**
      * Package types to installer class map
      *
@@ -28,7 +40,10 @@ class Installer extends LibraryInstaller
         'bonefish'     => 'BonefishInstaller',
         'cakephp'      => 'CakePHPInstaller',
         'chef'         => 'ChefInstaller',
+<<<<<<< HEAD
         'civicrm'      => 'CiviCrmInstaller',
+=======
+>>>>>>> pantheon-drops-8/master
         'ccframework'  => 'ClanCatsFrameworkInstaller',
         'cockpit'      => 'CockpitInstaller',
         'codeigniter'  => 'CodeIgniterInstaller',
@@ -109,6 +124,7 @@ class Installer extends LibraryInstaller
     );
 
     /**
+<<<<<<< HEAD
      * Installer constructor.
      *
      * Disables installers specified in main composer extra installer-disable
@@ -133,6 +149,8 @@ class Installer extends LibraryInstaller
     }
 
     /**
+=======
+>>>>>>> pantheon-drops-8/master
      * {@inheritDoc}
      */
     public function getInstallPath(PackageInterface $package)
@@ -227,6 +245,7 @@ class Installer extends LibraryInstaller
     {
         return $this->io;
     }
+<<<<<<< HEAD
 
     /**
      * Look for installers set to be disabled in composer's extra config and
@@ -271,4 +290,6 @@ class Installer extends LibraryInstaller
             }
         }
     }
+=======
+>>>>>>> pantheon-drops-8/master
 }

@@ -11,6 +11,10 @@ class DrupalInstaller extends BaseInstaller
         'profile'   => 'profiles/{$name}/',
         'drush'     => 'drush/{$name}/',
 	    'custom-theme' => 'themes/custom/{$name}/',
+<<<<<<< HEAD
 	    'custom-module' => 'modules/custom/{$name}/',
+=======
+	    'custom-module' => 'modules/custom/{$name}',
+>>>>>>> pantheon-drops-8/master
     );
 }

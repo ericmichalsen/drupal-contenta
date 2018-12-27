@@ -16,9 +16,15 @@ use Symfony\Component\Process\Exception\RuntimeException;
 /**
  * PhpProcess runs a PHP script in an independent process.
  *
+<<<<<<< HEAD
  *     $p = new PhpProcess('<?php echo "foo"; ?>');
  *     $p->run();
  *     print $p->getOutput()."\n";
+=======
+ * $p = new PhpProcess('<?php echo "foo"; ?>');
+ * $p->run();
+ * print $p->getOutput()."\n";
+>>>>>>> pantheon-drops-8/master
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */

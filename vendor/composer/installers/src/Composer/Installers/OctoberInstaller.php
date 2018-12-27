@@ -33,7 +33,10 @@ class OctoberInstaller extends BaseInstaller
     protected function inflectPluginVars($vars)
     {
         $vars['name'] = preg_replace('/^oc-|-plugin$/', '', $vars['name']);
+<<<<<<< HEAD
         $vars['vendor'] = preg_replace('/[^a-z0-9_]/i', '', $vars['vendor']);
+=======
+>>>>>>> pantheon-drops-8/master
 
         return $vars;
     }

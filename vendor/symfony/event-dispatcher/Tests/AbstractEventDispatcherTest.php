@@ -426,7 +426,11 @@ class TestEventSubscriberWithPriorities implements EventSubscriberInterface
         return array(
             'pre.foo' => array('preFoo', 10),
             'post.foo' => array('postFoo'),
+<<<<<<< HEAD
         );
+=======
+            );
+>>>>>>> pantheon-drops-8/master
     }
 }
 

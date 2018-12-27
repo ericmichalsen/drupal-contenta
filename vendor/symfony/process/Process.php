@@ -692,7 +692,11 @@ class Process implements \IteratorAggregate
     /**
      * Returns the exit code returned by the process.
      *
+<<<<<<< HEAD
      * @return int|null The exit status code, null if the Process is not terminated
+=======
+     * @return null|int The exit status code, null if the Process is not terminated
+>>>>>>> pantheon-drops-8/master
      *
      * @throws RuntimeException In case --enable-sigchild is activated and the sigchild compatibility mode is disabled
      */
@@ -713,7 +717,11 @@ class Process implements \IteratorAggregate
      * This method relies on the Unix exit code status standardization
      * and might not be relevant for other operating systems.
      *
+<<<<<<< HEAD
      * @return string|null A string representation for the exit status code, null if the Process is not terminated
+=======
+     * @return null|string A string representation for the exit status code, null if the Process is not terminated
+>>>>>>> pantheon-drops-8/master
      *
      * @see http://tldp.org/LDP/abs/html/exitcodes.html
      * @see http://en.wikipedia.org/wiki/Unix_signal
@@ -1565,8 +1573,13 @@ class Process implements \IteratorAggregate
         $this->exitcode = null;
         $this->fallbackStatus = array();
         $this->processInformation = null;
+<<<<<<< HEAD
         $this->stdout = fopen('php://temp/maxmemory:'.(1024 * 1024), 'w+b');
         $this->stderr = fopen('php://temp/maxmemory:'.(1024 * 1024), 'w+b');
+=======
+        $this->stdout = fopen('php://temp/maxmemory:'.(1024 * 1024), 'wb+');
+        $this->stderr = fopen('php://temp/maxmemory:'.(1024 * 1024), 'wb+');
+>>>>>>> pantheon-drops-8/master
         $this->process = null;
         $this->latestSignal = null;
         $this->status = self::STATUS_READY;

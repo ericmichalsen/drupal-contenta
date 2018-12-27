@@ -47,6 +47,7 @@ class QuestionHelper extends Helper
         }
 
         if (!$input->isInteractive()) {
+<<<<<<< HEAD
             $default = $question->getDefault();
 
             if (null !== $default && $question instanceof ChoiceQuestion) {
@@ -64,6 +65,15 @@ class QuestionHelper extends Helper
             }
 
             return $default;
+=======
+            if ($question instanceof ChoiceQuestion) {
+                $choices = $question->getChoices();
+
+                return $choices[$question->getDefault()];
+            }
+
+            return $question->getDefault();
+>>>>>>> pantheon-drops-8/master
         }
 
         if ($input instanceof StreamableInputInterface && $stream = $input->getStream()) {
@@ -140,7 +150,11 @@ class QuestionHelper extends Helper
     /**
      * Asks the question to the user.
      *
+<<<<<<< HEAD
      * @return bool|mixed|string|null
+=======
+     * @return bool|mixed|null|string
+>>>>>>> pantheon-drops-8/master
      *
      * @throws RuntimeException In case the fallback is deactivated and the response cannot be hidden
      */

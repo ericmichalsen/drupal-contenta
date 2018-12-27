@@ -39,11 +39,17 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 // - // indicates regular comments
 
+<<<<<<< HEAD
 /**
  * @deprecated since 2.4, to remove in 3.0. Use a string in the scanner instead.
  */
 class StringInputStream implements InputStream
 {
+=======
+class StringInputStream implements InputStream
+{
+
+>>>>>>> pantheon-drops-8/master
     /**
      * The string data we're parsing.
      */
@@ -67,13 +73,19 @@ class StringInputStream implements InputStream
     /**
      * Create a new InputStream wrapper.
      *
+<<<<<<< HEAD
      * @param string $data Data to parse
      * @param string $encoding The encoding to use for the data.
      * @param string $debug A fprintf format to use to echo the data on stdout.
+=======
+     * @param $data Data
+     *            to parse
+>>>>>>> pantheon-drops-8/master
      */
     public function __construct($data, $encoding = 'UTF-8', $debug = '')
     {
         $data = UTF8Utils::convertToUTF8($data, $encoding);
+<<<<<<< HEAD
         if ($debug) {
             fprintf(STDOUT, $debug, $data, strlen($data));
         }
@@ -82,6 +94,18 @@ class StringInputStream implements InputStream
         // do this here, since most of these checks are done during
         // parsing, and since this check doesn't actually *do* anything.
         $this->errors = UTF8Utils::checkForIllegalCodepoints($data);
+=======
+        if ($debug)
+            fprintf(STDOUT, $debug, $data, strlen($data));
+
+            // There is good reason to question whether it makes sense to
+            // do this here, since most of these checks are done during
+            // parsing, and since this check doesn't actually *do* anything.
+        $this->errors = UTF8Utils::checkForIllegalCodepoints($data);
+        // if (!empty($e)) {
+        // throw new ParseError("UTF-8 encoding issues: " . implode(', ', $e));
+        // }
+>>>>>>> pantheon-drops-8/master
 
         $data = $this->replaceLinefeeds($data);
 
@@ -90,22 +114,29 @@ class StringInputStream implements InputStream
         $this->EOF = strlen($data);
     }
 
+<<<<<<< HEAD
     public function __toString()
     {
         return $this->data;
     }
 
+=======
+>>>>>>> pantheon-drops-8/master
     /**
      * Replace linefeed characters according to the spec.
      */
     protected function replaceLinefeeds($data)
     {
         /*
+<<<<<<< HEAD
          * U+000D CARRIAGE RETURN (CR) characters and U+000A LINE FEED (LF) characters are treated specially.
          * Any CR characters that are followed by LF characters must be removed, and any CR characters not
          * followed by LF characters must be converted to LF characters. Thus, newlines in HTML DOMs are
          * represented by LF characters, and there are never any CR characters in the input to the tokenization
          * stage.
+=======
+         * U+000D CARRIAGE RETURN (CR) characters and U+000A LINE FEED (LF) characters are treated specially. Any CR characters that are followed by LF characters must be removed, and any CR characters not followed by LF characters must be converted to LF characters. Thus, newlines in HTML DOMs are represented by LF characters, and there are never any CR characters in the input to the tokenization stage.
+>>>>>>> pantheon-drops-8/master
          */
         $crlfTable = array(
             "\0" => "\xEF\xBF\xBD",
@@ -136,7 +167,11 @@ class StringInputStream implements InputStream
      */
     public function getCurrentLine()
     {
+<<<<<<< HEAD
         return $this->currentLine();
+=======
+        return currentLine();
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -291,8 +326,11 @@ class StringInputStream implements InputStream
      *            substring.
      * @param int $max
      *            The max number of chars to read.
+<<<<<<< HEAD
      *
      * @return string
+=======
+>>>>>>> pantheon-drops-8/master
      */
     public function charsWhile($bytes, $max = null)
     {

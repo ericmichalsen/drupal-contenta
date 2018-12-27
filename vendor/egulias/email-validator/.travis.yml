@@ -2,17 +2,25 @@ sudo: false
 
 language: php
 
+<<<<<<< HEAD
 cache:
   directories:
     - $HOME/.composer/cache/files
 
 php:
+=======
+php:
+  - 5.3
+>>>>>>> pantheon-drops-8/master
   - 5.4
   - 5.5
   - 5.6
   - 7.0
+<<<<<<< HEAD
   - 7.1
   - 7.2
+=======
+>>>>>>> pantheon-drops-8/master
   - hhvm
 
 env:
@@ -23,9 +31,12 @@ matrix:
   fast_finish: true
   include:
     - php: 5.3
+<<<<<<< HEAD
       dist: precise
     - php: 5.3
       dist: precise
+=======
+>>>>>>> pantheon-drops-8/master
       env: deps=low
     - php: 5.4
       env: deps=no
@@ -39,5 +50,9 @@ install:
 
 script:
  - mkdir -p build/logs
+<<<<<<< HEAD
  - composer test -- --coverage-clover build/logs/clover.xml
+=======
+ - phpunit --coverage-clover build/logs/clover.xml
+>>>>>>> pantheon-drops-8/master
 

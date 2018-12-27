@@ -65,7 +65,11 @@ class AcceptHeaderItem
     }
 
     /**
+<<<<<<< HEAD
      * Returns header value's string representation.
+=======
+     * Returns header  value's string representation.
+>>>>>>> pantheon-drops-8/master
      *
      * @return string
      */

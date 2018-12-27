@@ -117,7 +117,11 @@ class Question
     /**
      * Gets values for the autocompleter.
      *
+<<<<<<< HEAD
      * @return iterable|null
+=======
+     * @return null|iterable
+>>>>>>> pantheon-drops-8/master
      */
     public function getAutocompleterValues()
     {
@@ -127,7 +131,11 @@ class Question
     /**
      * Sets values for the autocompleter.
      *
+<<<<<<< HEAD
      * @param iterable|null $values
+=======
+     * @param null|iterable $values
+>>>>>>> pantheon-drops-8/master
      *
      * @return $this
      *
@@ -156,7 +164,11 @@ class Question
     /**
      * Sets a validator for the question.
      *
+<<<<<<< HEAD
      * @param callable|null $validator
+=======
+     * @param null|callable $validator
+>>>>>>> pantheon-drops-8/master
      *
      * @return $this
      */
@@ -170,7 +182,11 @@ class Question
     /**
      * Gets the validator for the question.
      *
+<<<<<<< HEAD
      * @return callable|null
+=======
+     * @return null|callable
+>>>>>>> pantheon-drops-8/master
      */
     public function getValidator()
     {
@@ -182,7 +198,11 @@ class Question
      *
      * Null means an unlimited number of attempts.
      *
+<<<<<<< HEAD
      * @param int|null $attempts
+=======
+     * @param null|int $attempts
+>>>>>>> pantheon-drops-8/master
      *
      * @return $this
      *
@@ -204,7 +224,11 @@ class Question
      *
      * Null means an unlimited number of attempts.
      *
+<<<<<<< HEAD
      * @return int|null
+=======
+     * @return null|int
+>>>>>>> pantheon-drops-8/master
      */
     public function getMaxAttempts()
     {

@@ -125,7 +125,11 @@ class TableStyle
     /**
      * Gets crossing character.
      *
+<<<<<<< HEAD
      * @return string
+=======
+     * @return string $crossingChar
+>>>>>>> pantheon-drops-8/master
      */
     public function getCrossingChar()
     {

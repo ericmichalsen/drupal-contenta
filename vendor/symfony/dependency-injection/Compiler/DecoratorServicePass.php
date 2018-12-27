@@ -34,7 +34,10 @@ class DecoratorServicePass implements CompilerPassInterface
             }
             $definitions->insert(array($id, $definition), array($decorated[2], --$order));
         }
+<<<<<<< HEAD
         $decoratingDefinitions = array();
+=======
+>>>>>>> pantheon-drops-8/master
 
         foreach ($definitions as list($id, $definition)) {
             list($inner, $renamedId) = $definition->getDecoratedService();
@@ -54,6 +57,7 @@ class DecoratorServicePass implements CompilerPassInterface
                 $container->setAlias($renamedId, new Alias($container->normalizeId($alias), false));
             } else {
                 $decoratedDefinition = $container->getDefinition($inner);
+<<<<<<< HEAD
                 $public = $decoratedDefinition->isPublic();
                 $private = $decoratedDefinition->isPrivate();
                 $decoratedDefinition->setPublic(false);
@@ -73,6 +77,20 @@ class DecoratorServicePass implements CompilerPassInterface
                     $decoratingDefinition->setAutowiringTypes(array());
                 }
                 $decoratingDefinitions[$inner] = $definition;
+=======
+                $definition->setTags(array_merge($decoratedDefinition->getTags(), $definition->getTags()));
+                if ($types = array_merge($decoratedDefinition->getAutowiringTypes(false), $definition->getAutowiringTypes(false))) {
+                    $definition->setAutowiringTypes($types);
+                }
+                $public = $decoratedDefinition->isPublic();
+                $private = $decoratedDefinition->isPrivate();
+                $decoratedDefinition->setPublic(false);
+                $decoratedDefinition->setTags(array());
+                if ($decoratedDefinition->getAutowiringTypes(false)) {
+                    $decoratedDefinition->setAutowiringTypes(array());
+                }
+                $container->setDefinition($renamedId, $decoratedDefinition);
+>>>>>>> pantheon-drops-8/master
             }
 
             $container->setAlias($inner, $id)->setPublic($public)->setPrivate($private);
